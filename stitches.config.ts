@@ -10,8 +10,12 @@ export const {styled, css, globalCss, keyframes, getCssText, theme, createTheme,
     },
     media: {
       bp1: '(min-width: 640px)',
-      bp2: '(min-width: 768px)',
-      bp3: '(min-width: 1024px)',
+      bp2: '(min-width: 1100px)',
     },
-    utils: {},
+    utils: {
+      marginX: (value: string | number) => ({
+        marginLeft: value,
+        marginRight: value,
+      }),
+    },
   });

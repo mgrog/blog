@@ -12,25 +12,32 @@ type Props = {
 
 let Post = ({image, title, subtitle, postId, children, tags}: Props) => {
   return (
-    <StyledPost reverse={!!(+postId % 2)} w-full>
-      <StyledChildren col>
+    <StyledPost w-full layout={{'@initial': 'col', '@bp2': +postId % 2 ? 'row' : 'reverse'}}>
+      <PostImg>
+        <Image
+          layout={'fill'}
+          src={image}
+          alt='post image'
+          objectFit='contain'
+          objectPosition='left'
+        />
+      </PostImg>
+      <PostChildren col layout={{'@initial': 'normal', '@bp1': 'w-min', '@bp2': 'h-fixed'}}>
         <Tags tags={tags} />
         <Title>{title}</Title>
         <SubTitle>{subtitle}</SubTitle>
         <Content>{children}</Content>
         <Link href={`/posts/${postId}`}>Read Post ➔</Link>
-      </StyledChildren>
-      <Box css={{width: '50%', position: 'relative'}}>
-        <Image layout={'fill'} src={image} alt='post image' />
-      </Box>
+      </PostChildren>
     </StyledPost>
   );
 };
 
-const Title = ({children}: {children: ReactNode}) => (
-  <Text alternate weight={600} pad={1}>
-    {children}
-  </Text>
+const Title = ({children}: {children: string}) => (
+  <StyledTitle
+    nowrap={{'@initial': false, '@bp1': true}}
+    dangerouslySetInnerHTML={{__html: children}}
+  />
 );
 
 const SubTitle = ({children}: {children: ReactNode}) => (
@@ -61,38 +68,72 @@ export {Post};
 
 // styles
 
-const StyledChildren = styled(Flex, {
-  width: '50%',
+const PostChildren = styled(Flex, {
+  width: '100%',
+  overflow: 'hidden',
+  paddingBottom: 10,
+  variants: {
+    layout: {
+      'w-min': {
+        minWidth: 430,
+      },
+      'h-fixed': {
+        height: 292,
+      },
+      normal: {
+        minWidth: 0,
+        height: 'auto',
+      },
+    },
+  },
 });
 
-const StyledPost = styled(Flex, {
-  margin: '60px 0',
-  flexDirection: 'column',
-  justifyContent: 'space-between',
-  '@bp2': {
-    flexDirection: 'row',
+const PostImg = styled(Flex, {
+  width: '100%',
+  position: 'relative',
+  height: 310,
+  '@media (max-width: 380px)': {
+    height: 290,
   },
+});
+
+const StyledTitle = styled(Text, {
   variants: {
-    reverse: {
+    nowrap: {
       true: {
-        flexDirection: 'row-reverse',
-        [`& ${StyledChildren}`]: {
-          '@initial': {
-            paddingLeft: 10,
-          },
-          '@bp2': {
-            paddingLeft: 40,
-          },
-        },
+        whiteSpace: 'nowrap',
       },
       false: {
-        [`& ${StyledChildren}`]: {
-          '@initial': {
-            paddingRight: 10,
-          },
-          '@bp2': {
-            paddingRight: 40,
-          },
+        whiteSpace: 'normal',
+      },
+    },
+  },
+});
+
+const StyledPost = styled('div', {
+  display: 'flex',
+  position: 'relative',
+  justifyContent: 'space-between',
+  variants: {
+    layout: {
+      col: {
+        flexDirection: 'column',
+        maxWidth: 500,
+      },
+      row: {
+        flexDirection: 'row',
+        maxWidth: '100%',
+        margin: '60px 0',
+        [`& ${PostChildren}`]: {
+          paddingLeft: 40,
+        },
+      },
+      reverse: {
+        maxWidth: '100%',
+        flexDirection: 'row-reverse',
+        margin: '60px 0',
+        [`& ${PostChildren}`]: {
+          paddingRight: 40,
         },
       },
     },

@@ -39,21 +39,13 @@ export const getStaticProps: GetStaticProps = async () => {
   for (let file of fs.readdirSync('./pages/posts')) {
     let {meta} = await import(`./posts/${file}`);
 
-    let content = fs.readFileSync(`./pages/posts/${file}`, 'utf8');
-
-    let [title, subtitle, p1] = content
-      .split('\n\n')
-      .filter((line) => !line.match(/^import\s.*/))
-      .filter((line) => !line.match(/^export\s.*/))
-      .map((l) => rmMarkdown(l));
-
     let [postNum] = file.split('.');
 
     let map = {
       postId: postNum,
-      title: title,
-      subtitle: subtitle,
-      content: p1,
+      title: meta?.title || null,
+      subtitle: meta?.subtitle || null,
+      content: meta?.snippet || null,
       tags: meta?.tags || null,
       published: meta?.published || null,
     };
