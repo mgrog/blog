@@ -1,5 +1,5 @@
 import {styled} from '~/stitches.config';
-export const Text = styled('h1', {
+export const SiteText = styled('h1', {
   padding: 0,
   variants: {
     alternate: {
@@ -15,7 +15,7 @@ export const Text = styled('h1', {
         fontSize: '1em',
       },
       2: {
-        fontSize: '1.2em',
+        fontSize: '1.4em',
       },
       3: {
         fontSize: '2em',
@@ -56,7 +56,7 @@ export const Text = styled('h1', {
     },
   },
   defaultVariants: {
-    color: 'dark',
+    color: 'light',
     size: 3,
     weight: 400,
   },

@@ -1,8 +1,8 @@
-import {Box, Flex, Text} from '@elements';
+import {Box, Flex, SiteText} from '@elements';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, {ReactNode} from 'react';
-import {Snippet} from '~/pages';
+import {Snippet} from '~/pages/posts';
 import {styled} from '~/stitches.config';
 
 type Props = {
@@ -12,7 +12,7 @@ type Props = {
 
 let Post = ({image, title, subtitle, postId, children, tags}: Props) => {
   return (
-    <StyledPost w-full layout={{'@initial': 'col', '@bp2': +postId % 2 ? 'row' : 'reverse'}}>
+    <StyledPost w100 layout={{'@initial': 'col', '@bp2': +postId % 2 ? 'row' : 'reverse'}}>
       <PostImg>
         <Image
           layout={'fill'}
@@ -41,23 +41,23 @@ const Title = ({children}: {children: string}) => (
 );
 
 const SubTitle = ({children}: {children: ReactNode}) => (
-  <Text alternate weight={400} size={2} pad={0}>
+  <SiteText alternate weight={400} size={2} pad={0}>
     {children}
-  </Text>
+  </SiteText>
 );
 
 const Content = ({children}: {children: ReactNode}) => (
-  <Text as='p' size={1} pad={1}>
+  <SiteText as='p' size={1} pad={1}>
     {children}
-  </Text>
+  </SiteText>
 );
 
 const Tags = ({tags}: {tags: string[]}) => (
   <Flex css={{gap: 5}}>
     {tags.map((tag, i) => (
-      <Text as='h3' key={i} size={2} alternate weight={600} pad={0}>
+      <SiteText as='h3' key={i} size={2} alternate weight={600} pad={0}>
         #{tag}
-      </Text>
+      </SiteText>
     ))}
   </Flex>
 );
@@ -97,7 +97,7 @@ const PostImg = styled(Flex, {
   },
 });
 
-const StyledTitle = styled(Text, {
+const StyledTitle = styled(SiteText, {
   variants: {
     nowrap: {
       true: {

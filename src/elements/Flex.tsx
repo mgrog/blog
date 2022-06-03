@@ -16,12 +16,12 @@ export const Flex = styled('div', {
         flex: 1,
       },
     },
-    'w-full': {
+    w100: {
       true: {
         width: '100%',
       },
     },
-    'h-full': {
+    h100: {
       true: {
         height: '100%',
       },
@@ -36,6 +36,11 @@ export const Flex = styled('div', {
       true: {
         alignItems: 'center',
         justifyContent: 'center',
+      },
+    },
+    spaceBetween: {
+      true: {
+        justifyContent: 'space-between',
       },
     },
   },

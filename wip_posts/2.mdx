@@ -1,0 +1,53 @@
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import {hopscotch} from 'react-syntax-highlighter/dist/cjs/styles/hljs';
+export const meta = {
+  title: 'Learn Elixir by Doing (&nbsp;part&nbsp;1&nbsp;)',
+  subtitle: "Mess up your prototype so you don't do it on the real thing",
+  snippet: 'Pick a snippet that looks good',
+  tags: ['elixir', 'guides'],
+  published: '5/2/2022',
+};
+
+# Learn Elixir by Doing <pre>( part 1 )</pre>
+
+## Mess up your prototype so you don't do it on the real thing
+
+So you have a nice idea with some potential. You need an app, and you need it yesterday.
+But you don't have a lot of resources, you don't have a lot of time, you can't spend a fortune on server hosting, and it needs to just work so you don't spend your nights fixing it.
+It's a tall order. You need a tech stack that lets you protoype fast, scale easily, and do it all without drowning you in maintenance and complexity.
+
+I'm not going to bury the lede, the answer is Elixir and Phoenix.
+If you don't believe me, I invite you to read how [some](https://discord.com/blog/how-discord-scaled-elixir-to-5-000-000-concurrent-users) well-known [companies](https://www.quastor.org/p/how-whatsapp-scaled-to-1-billion?s=r)
+did exactly that using some technology a couple of smart guys [built in the 80's](https://dockyard.com/blog/2018/07/18/all-for-reliability-reflections-on-the-erlang-thesis).
+But if you want the short version, there's only one way to be fast in the web world, and that's **concurrency**.
+Most of the time a webserver is just waiting for things. Waiting for a network call, waiting for the db, waiting for I/O. A webserver's life is to hurry up and wait.
+So unless you can let the computer do other things while it's waiting, it's eventually going to slow down.
+And that's where the underpinings of elixir (BEAM/OTP) really shine. It's [really, really good](https://phoenixframework.org/blog/the-road-to-2-million-websocket-connections) at doing a whole lot at the same time.
+Concurrency is generally a hard problem in computer science, but when you start with an entire programming model built around the concept, it becomes easy.
+Such is the way of things in the Elixir world.
+
+But I'm not one for lectures and theory. It's time to build something and see if this hype stands up to reality.
+I'm going to build a chat app. It sounds simple but you'd be surprised at how many things it touches.
+It's going to have websockets, a database, user signup and authentication, and integrate a React frontend.
+And Phoenix is going to do all of it. I'm going to be honest, I make some mistakes.
+Instead of rewriting history, I'm going to call them out and explain why and what I'd do in hindsight.
+Hopefully it will inspire you to make better choices. Or maybe it won't. But that's ok, we're all learning here.
+
+### Trouble out the gate
+
+So before writing any code, I had to reconcile with the fact that Elixir and Phoenix are still young and changing.
+Phoenix versions post 1.3 are substantially different than the versions before it.
+It's a complete reorg of the framework that separates web functionality and internal business code.
+I won't go too far into it, but post 1.3 you need to organize your code into contexts which are a bit like elixir protocols for interfacing with your app.
+The idiom is a little vague by design, as it leaves some choices up to you, but the phoenix hexdocs give a pretty good explanation to get you thinking in the right direction.
+The main point is, if you see some old elixir code snippets that don't make sense, it's likely pre 1.3 code. It's something that stumped me a bit early on.
+
+<SyntaxHighlighter language={'elixir'} style={hopscotch}>
+  {`
+  def create_event(attrs \\ %{}) do 
+    %Event{}
+    |> Event.changeset(attrs) 
+    |> Repo.insert() 
+  end 
+  `}
+</SyntaxHighlighter>
