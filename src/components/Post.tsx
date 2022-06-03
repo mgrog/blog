@@ -12,7 +12,7 @@ type Props = {
 
 let Post = ({image, title, subtitle, postId, children, tags}: Props) => {
   return (
-    <StyledPost w100 layout={{'@initial': 'col', '@bp2': +postId % 2 ? 'row' : 'reverse'}}>
+    <StyledPost layout={{'@initial': 'col', '@bp2': +postId % 2 ? 'row' : 'reverse'}}>
       <PostImg>
         <Image
           layout={'fill'}
