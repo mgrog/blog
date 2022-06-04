@@ -2,6 +2,7 @@ import {ContentContainer, Flex, Section, SiteText} from '@elements';
 import {NextPage} from 'next';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
+import beachPic from '@assets/me-beach.jpg';
 
 const GetInTouch = dynamic(() => import('@pageMarkdown/GetInTouch.mdx'));
 
@@ -28,10 +29,11 @@ const About: NextPage<{}> = () => {
 
           <figure>
             <Image
+              placeholder='blur'
               width={400}
               height={300}
               layout='responsive'
-              src='/me-beach.jpg'
+              src={beachPic}
               alt='picture of me at the beach'
             />
             <SiteText as='figcaption' size={1}>

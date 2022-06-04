@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import {Ridge0, Ridge1, Ridge2, Ridge3, Treeline} from '@assets';
+import {Ridge0, Ridge1, Ridge2, Ridge3, Treeline} from '@assets/banner-layers';
 import {Parallax, Preserve} from '@elements';
 import React from 'react';
 

@@ -16,7 +16,7 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@assets": ["./assets"],
+      "@assets/*": ["./assets/*"],
       "@components": ["./src/components"],
       "@elements": ["./src/elements"],
       "@icons/*": ["./icons/*"],
