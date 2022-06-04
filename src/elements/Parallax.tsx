@@ -9,7 +9,7 @@ export const Parallax = styled('div', {
     layer: {
       0: {
         '@bp0': {
-          transform: 'translateZ(0px) scale(0.6)',
+          transform: 'translateZ(0px) scale(0.4)',
           top: 400,
         },
         '@bp2': {
@@ -19,7 +19,7 @@ export const Parallax = styled('div', {
       },
       1: {
         '@bp0': {
-          transform: 'translateZ(-0.5px) scale(0.5)',
+          transform: 'translateZ(-0.5px) scale(0.4)',
           top: 150,
         },
         '@bp2': {
@@ -29,7 +29,7 @@ export const Parallax = styled('div', {
       },
       2: {
         '@bp0': {
-          transform: 'translateZ(-0.8px) scale(0.5)',
+          transform: 'translateZ(-0.8px) scale(0.4)',
           top: 450,
         },
         '@bp2': {
@@ -39,8 +39,8 @@ export const Parallax = styled('div', {
       },
       3: {
         '@bp0': {
-          transform: 'translateZ(-1px) scale(0.5)',
-          top: 300,
+          transform: 'translateZ(-1px) scale(0.4)',
+          top: 250,
         },
         '@bp2': {
           left: 0,
@@ -50,13 +50,17 @@ export const Parallax = styled('div', {
       },
       4: {
         '@bp0': {
-          transform: 'translateZ(-1.3px) scale(0.5)',
-          top: 550,
+          transform: 'translateZ(-1.3px) scale(0.4)',
+          top: 500,
         },
         '@bp2': {
           transform: 'translateZ(-1.3px)',
           top: 310,
         },
+      },
+      5: {
+        transform: 'translateZ(-2px) scale(1.5)',
+        top: 0,
       },
     },
   },
@@ -70,8 +74,10 @@ export const Perspective = styled('div', {
   '-webkit-overflow-scrolling': 'touch',
   overflowX: 'hidden',
   width: '100%',
-  backgroundColor: '#7EA6D7',
+  // backgroundColor: '#7EA6D7',
+  backgroundColor: '#121212',
   minHeight: '100vh',
+  maxHeight: '100vh',
 });
 
 export const Preserve = styled('div', {
