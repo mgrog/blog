@@ -62,6 +62,7 @@ export const Parallax = styled('div', {
 });
 
 export const Perspective = styled('div', {
+  paddingTop: 100,
   perspective: 1,
   perspectiveOrigin: 'top left',
   overflowY: 'scroll',
@@ -73,5 +74,5 @@ export const Perspective = styled('div', {
 
 export const Preserve = styled('div', {
   transformStyle: 'preserve-3d',
-  height: 600,
+  height: '$banner-height',
 });

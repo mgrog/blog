@@ -2,6 +2,8 @@
   --primary: #1b60a5;
   --dark-primary: #052b4f;
   --darker-primary: #001b33;
+  --banner-height: 600px;
+  --dark-neutral: #121212;
 }
 
 html {
@@ -42,4 +44,8 @@ a:hover {
 
 * {
   box-sizing: border-box;
+}
+
+figure {
+  margin: 0;
 }

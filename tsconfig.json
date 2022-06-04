@@ -20,9 +20,10 @@
       "@components": ["./src/components"],
       "@elements": ["./src/elements"],
       "@icons/*": ["./icons/*"],
+      "@pageMarkdown/*": ["./page-markdown/*"],
       "~/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "build-snippets.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "build-snippets.js", "pages/about"],
   "exclude": ["node_modules"]
 }

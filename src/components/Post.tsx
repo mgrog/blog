@@ -1,14 +1,13 @@
-import {Box, Flex, SiteText} from '@elements';
+import {Flex, SiteText} from '@elements';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, {ReactNode} from 'react';
-import {Snippet} from '~/pages/posts';
 import {styled} from '~/stitches.config';
 
 type Props = {
   image: string;
   children?: ReactNode;
-} & Omit<Snippet, 'content'>;
+} & Omit<MetaData, 'content'>;
 
 let Post = ({image, title, subtitle, postId, children, tags}: Props) => {
   return (

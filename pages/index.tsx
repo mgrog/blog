@@ -1,13 +1,13 @@
-import React from 'react';
-import {ContentContainer, SiteText} from '@elements';
+import {ContentContainer} from '@elements';
+import HomeMD from '@pageMarkdown/HomeMD.mdx';
 import {NextPage} from 'next';
-import HomeText from './HomeText.mdx';
+import React from 'react';
 import styles from '../styles/Home.module.css';
 
 const Home: NextPage<{}> = () => {
   return (
     <ContentContainer size={{'@initial': 'mobile', '@bp2': 'desktop'}} className={styles.hometext}>
-      <HomeText aria-label='home-text' />
+      <HomeMD />
     </ContentContainer>
   );
 };

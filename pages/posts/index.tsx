@@ -4,16 +4,7 @@ import fs from 'fs';
 import type {GetStaticProps, NextPage} from 'next';
 import {useScrollTo} from '~/src/hooks/useScrollTo';
 
-export type Snippet = {
-  postId: string;
-  title: string;
-  subtitle: string;
-  content: string;
-  tags: string[];
-  published: string;
-};
-
-const Posts: NextPage<{snippets: Snippet[]}> = ({snippets}: {snippets: Snippet[]}) => {
+const Posts: NextPage<{metadata: MetaData[]}> = ({metadata}: {metadata: MetaData[]}) => {
   const [ref, parentRef] = useScrollTo<HTMLHeadingElement>();
 
   return (
@@ -21,16 +12,16 @@ const Posts: NextPage<{snippets: Snippet[]}> = ({snippets}: {snippets: Snippet[]
       <SiteText ref={ref} pad={1}>
         Posts
       </SiteText>
-      {snippets.map((snip) => (
+      {metadata.map((meta) => (
         <Post
-          key={snip.postId}
-          postId={snip.postId}
-          image={'https://via.placeholder.com/500x300.png/e8e8e8/555'}
-          title={snip.title}
-          subtitle={snip.subtitle}
-          published={snip.published}
-          tags={snip.tags}>
-          {snip.content}
+          key={meta.postId}
+          postId={meta.postId}
+          image={`/post-images/${meta.postId}.jpeg`}
+          title={meta.title}
+          subtitle={meta.subtitle}
+          published={meta.published}
+          tags={meta.tags}>
+          {meta.content}
         </Post>
       ))}
     </ContentContainer>
@@ -38,7 +29,7 @@ const Posts: NextPage<{snippets: Snippet[]}> = ({snippets}: {snippets: Snippet[]
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  let snippets: any[] = [];
+  let metadata: any[] = [];
 
   for (let file of fs.readdirSync('./pages/posts')) {
     if (file.includes('.mdx')) {
@@ -55,11 +46,11 @@ export const getStaticProps: GetStaticProps = async () => {
         published: meta?.published || null,
       };
 
-      snippets.push(map);
+      metadata.push(map);
     }
   }
   return {
-    props: {snippets},
+    props: {metadata},
   };
 };
 

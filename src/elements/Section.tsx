@@ -3,13 +3,19 @@ import {styled} from '@stitches/react';
 export const Section = styled('section', {
   width: '100vw',
   padding: '40px 0',
+  '& h1': {
+    marginTop: 0,
+  },
   variants: {
     color: {
       0: {
-        backgroundColor: 'black',
+        backgroundColor: '$dark-neutral',
       },
       1: {
-        backgroundColor: 'var(--darker-primary)',
+        backgroundColor: '$darker-primary',
+      },
+      2: {
+        backgroundColor: '$dark-primary',
       },
     },
   },

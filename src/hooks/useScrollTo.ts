@@ -1,4 +1,4 @@
-import {MutableRefObject, useEffect, useRef} from 'react';
+import {useEffect, useRef} from 'react';
 
 export function useScrollTo<T extends HTMLElement>() {
   const ref = useRef<T>(null);
@@ -7,7 +7,7 @@ export function useScrollTo<T extends HTMLElement>() {
   useEffect(() => {
     let scrollHeight = parentRef.current?.scrollHeight || 0;
 
-    if (scrollHeight > window.innerHeight - 600) {
+    if (scrollHeight > window.innerHeight - 700) {
       ref.current?.scrollIntoView({block: 'center'});
     }
   }, [ref, parentRef]);

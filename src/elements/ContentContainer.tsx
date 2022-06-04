@@ -1,7 +1,6 @@
 import {styled} from '~/stitches.config';
 
 export const ContentContainer = styled('div', {
-  marginTop: 30,
   variants: {
     size: {
       mobile: {

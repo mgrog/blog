@@ -41,16 +41,15 @@ function Content({markdown, children}: ContentProps) {
   return (
     <Flex
       css={{
-        paddingBottom: 50,
         justifyContent: 'center',
         width: '100%',
-        backgroundColor: '#000',
+        backgroundColor: '$dark-neutral',
         minHeight: 'calc(100vh - 604px)',
         zIndex: 10,
         position: 'absolute',
         '-webkit-transform': 'translateZ(0px)',
         '@bp0': {
-          fontSize: 12,
+          fontSize: 14,
         },
         '@bp2': {
           fontSize: 16,

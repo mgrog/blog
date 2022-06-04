@@ -2,7 +2,7 @@ import {Flex} from '@elements';
 import Link from 'next/link';
 import React, {useEffect, useRef, useState} from 'react';
 import {styled} from '~/stitches.config';
-import {Github, LinkedIn} from '~/icons';
+import {Github, LinkedIn, Telegram} from '~/icons';
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
@@ -43,14 +43,23 @@ const NavBar = () => {
           <Link href='/cv' passHref>
             <NavItem>CV/Resume</NavItem>
           </Link>
+          <Link href='/about' passHref>
+            <NavItem>About Me</NavItem>
+          </Link>
         </StyledBar>
+        <Tip>nav here!</Tip>
       </StyledNavBall>
-      <IconBtn css={{top: 0}} href='https://www.github.com/mgrog'>
-        <Github height={35} />
-      </IconBtn>
-      <IconBtn css={{bottom: 0}} href='https://www.linkedin.com/in/michael-grogan-2a164666/'>
-        <LinkedIn height={35} />
-      </IconBtn>
+      <Flex col css={{position: 'absolute', left: 'calc(100% + 10px)', top: -10, gap: 20}}>
+        <IconBtn href='https://www.github.com/mgrog'>
+          <Github height={35} />
+        </IconBtn>
+        <IconBtn href='https://t.me/mikegroganchat'>
+          <Telegram height={35} fill='#1b60a5' />
+        </IconBtn>
+        <IconBtn href='https://www.linkedin.com/in/michael-grogan-2a164666/'>
+          <LinkedIn height={35} fill='#052b4f' />
+        </IconBtn>
+      </Flex>
     </Container>
   );
 };
@@ -66,8 +75,8 @@ const Container = styled('div', {
 
 const StyledNavBall = styled('div', {
   borderRadius: 999,
-  height: 120,
-  width: 120,
+  height: 150,
+  width: 150,
   backgroundColor: 'white',
   zIndex: 1000,
   '@media (prefers-reduced-motion)': {
@@ -75,7 +84,7 @@ const StyledNavBall = styled('div', {
   },
   transition: '$bounce',
   '&.open': {
-    width: 180,
+    width: 200,
   },
 });
 
@@ -87,7 +96,7 @@ const StyledBar = styled(Flex, {
   backgroundColor: 'transparent',
   borderTopLeftRadius: 15,
   borderBottomLeftRadius: 15,
-  padding: 20,
+  padding: '20px 30px',
   '@media (prefers-reduced-motion)': {
     transition: 'none',
   },
@@ -122,8 +131,6 @@ const NavItem = styled('a', {
 });
 
 const IconBtn = styled('a', {
-  position: 'absolute',
-  left: 'calc(100% + 10px)',
   backgroundColor: 'transparent',
   border: 'none',
   transition: 'transform ease 150ms',
@@ -134,4 +141,14 @@ const IconBtn = styled('a', {
     filter: 'drop-shadow(0 20px 13px rgb(0 0 0 / 0.03)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08))',
     transform: 'translateY(-5px)',
   },
+});
+
+const Tip = styled('div', {
+  position: 'absolute',
+  top: 24,
+  right: 18,
+  fontSize: 13,
+  transform: 'rotate(17deg)',
+  color: 'Gray',
+  fontFamily: 'Indie Flower, cursive',
 });
