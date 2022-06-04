@@ -2,8 +2,8 @@ import {styled} from '~/stitches.config';
 
 export const Parallax = styled('div', {
   position: 'absolute',
-  overflow: 'visible',
-  width: 2500,
+  left: -1,
+  overflowX: 'visible',
   transformOrigin: 'left',
   variants: {
     layer: {
@@ -19,21 +19,22 @@ export const Parallax = styled('div', {
       },
       1: {
         '@bp0': {
-          transform: 'translateZ(-0.5px) scale(0.4)',
-          top: 150,
+          transform: 'translateZ(-0.4px) scale(0.6)',
+          top: 248,
         },
         '@bp2': {
-          transform: 'translateZ(-0.5px)',
-          top: 100,
+          transform: 'translateZ(-0.4px)',
+          top: 242,
         },
       },
       2: {
+        left: -1,
         '@bp0': {
-          transform: 'translateZ(-0.8px) scale(0.4)',
-          top: 450,
+          transform: 'translateZ(-0.7px) scale(0.4)',
+          top: 340,
         },
         '@bp2': {
-          transform: 'translateZ(-0.8px)',
+          transform: 'translateZ(-0.7px)',
           top: 450,
         },
       },
@@ -51,7 +52,7 @@ export const Parallax = styled('div', {
       4: {
         '@bp0': {
           transform: 'translateZ(-1.3px) scale(0.4)',
-          top: 500,
+          top: 385,
         },
         '@bp2': {
           transform: 'translateZ(-1.3px)',

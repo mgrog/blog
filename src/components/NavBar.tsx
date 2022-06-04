@@ -27,7 +27,7 @@ const NavBar = () => {
       <StyledNavBall
         aria-label='navigation'
         ref={ref}
-        role='button'
+        role='navigation'
         tabIndex={0}
         className={className}
         onMouseEnter={() => setOpen(true)}
