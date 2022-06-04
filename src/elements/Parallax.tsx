@@ -68,7 +68,7 @@ export const Perspective = styled('div', {
   overflowY: 'scroll',
   overflowX: 'hidden',
   width: '100%',
-  height: 'calc(100vh - 2px)',
+  minHeight: '100vh',
   backgroundColor: '#7EA6D7',
 });
 
