@@ -8,7 +8,7 @@ const Posts: NextPage<{metadata: MetaData[]}> = ({metadata}: {metadata: MetaData
   const [ref, parentRef] = useScrollTo<HTMLHeadingElement>();
 
   return (
-    <ContentContainer ref={parentRef} size={{'@initial': 'mobile', '@bp2': 'desktop'}}>
+    <ContentContainer ref={parentRef} css={{paddingBottom: 50}}>
       <SiteText ref={ref} pad={1}>
         Posts
       </SiteText>
