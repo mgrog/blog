@@ -10,7 +10,7 @@ export const Parallax = styled('div', {
       0: {
         '@bp0': {
           transform: 'translateZ(0px) scale(0.4)',
-          top: 400,
+          top: 300,
         },
         '@bp2': {
           transform: 'translateZ(0px)',

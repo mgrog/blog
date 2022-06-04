@@ -12,7 +12,7 @@ function Banner() {
         <Ridge0
           transform={`scale(${0.8 * scaleFactor})`}
           transform-origin='top left'
-          height={300}
+          height={500}
         />
       </Parallax>
       <Parallax layer={1}>
