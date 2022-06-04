@@ -2,7 +2,7 @@ import {styled} from '~/stitches.config';
 
 export const Parallax = styled('div', {
   position: 'absolute',
-  overflowX: 'visible',
+  overflow: 'visible',
   width: 2500,
   variants: {
     layer: {
@@ -75,4 +75,5 @@ export const Perspective = styled('div', {
 export const Preserve = styled('div', {
   transformStyle: 'preserve-3d',
   height: '$banner-height',
+  overflow: 'visible',
 });

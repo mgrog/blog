@@ -7,7 +7,7 @@ function Banner() {
   const scaleFactor = 1;
 
   return (
-    <Preserve aria-label='mountain-picture'>
+    <Preserve aria-label='layers of mountains in the distance, trees are in the foreground, the perspective shifts as you move down the page'>
       <Parallax layer={0}>
         <Ridge0
           transform={`scale(${0.8 * scaleFactor})`}

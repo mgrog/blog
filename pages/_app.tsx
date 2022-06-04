@@ -44,6 +44,7 @@ function Content({markdown, children}: ContentProps) {
         minHeight: 'calc(100vh - 604px)',
         zIndex: 10,
         position: 'absolute',
+        overflow: 'hidden',
         '-webkit-transform': 'translateZ(0px)',
         '@bp0': {
           fontSize: 14,
