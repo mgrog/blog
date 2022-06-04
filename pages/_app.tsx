@@ -37,11 +37,11 @@ type ContentProps = {
 function Content({markdown, children}: ContentProps) {
   return (
     <Flex
+      h100
       css={{
         justifyContent: 'center',
         width: '100%',
         backgroundColor: '$dark-neutral',
-        minHeight: 'calc(100vh - 604px)',
         zIndex: 10,
         position: 'absolute',
         overflow: 'hidden',

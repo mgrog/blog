@@ -70,8 +70,8 @@ export const Perspective = styled('div', {
   '-webkit-overflow-scrolling': 'touch',
   overflowX: 'hidden',
   width: '100%',
-  minHeight: '100vh',
   backgroundColor: '#7EA6D7',
+  minHeight: '100vh',
 });
 
 export const Preserve = styled('div', {
