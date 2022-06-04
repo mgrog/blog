@@ -42,12 +42,10 @@ function Content({markdown, children}: ContentProps) {
         width: '100%',
         backgroundColor: '$dark-neutral',
         minHeight: 'calc(100vh - 604px)',
-        height: '-webkit-fill-available',
         zIndex: 10,
         position: 'absolute',
         overflow: 'hidden',
         '-webkit-transform': 'translateZ(0px)',
-        '-webkit-overflow-scrolling': 'touch',
         '@bp0': {
           fontSize: 14,
         },
