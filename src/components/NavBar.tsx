@@ -151,4 +151,5 @@ const Tip = styled('div', {
   transform: 'rotate(17deg)',
   color: 'Gray',
   fontFamily: 'Indie Flower, cursive',
+  cursor: 'default',
 });

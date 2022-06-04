@@ -45,6 +45,7 @@ function Content({markdown, children}: ContentProps) {
         zIndex: 10,
         position: 'absolute',
         overflow: 'hidden',
+        paddingBottom: 50,
         '-webkit-transform': 'translateZ(0px)',
         '@bp0': {
           fontSize: 14,
@@ -53,7 +54,7 @@ function Content({markdown, children}: ContentProps) {
           fontSize: 16,
         },
       }}>
-      {markdown ? <ContentContainer>{children}</ContentContainer> : children}
+      {markdown ? <ContentContainer css={{minHeight: 500}}>{children}</ContentContainer> : children}
     </Flex>
   );
 }
