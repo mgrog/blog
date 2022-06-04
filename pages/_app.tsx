@@ -1,15 +1,12 @@
-import {NavBar, Banner} from '@components';
+import {Banner, NavBar} from '@components';
 import {ContentContainer, Flex, Perspective} from '@elements';
 import type {AppProps} from 'next/app';
-import dynamic from 'next/dynamic';
 import {useRouter} from 'next/router';
-import {styled} from '~/stitches.config';
 import '../styles/globals.css';
 
 function MyApp({Component, pageProps}: AppProps) {
   const router = useRouter();
   let matchPost = Boolean(router.route.match(/^\/posts\/\d$/g));
-  console.log(router.route, matchPost);
 
   return (
     <Layout>

@@ -1,8 +1,8 @@
 import {Flex} from '@elements';
 import Link from 'next/link';
 import React, {useEffect, useRef, useState} from 'react';
-import {styled} from '~/stitches.config';
 import {Github, LinkedIn, Telegram} from '~/icons';
+import {styled} from '~/stitches.config';
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);

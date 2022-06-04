@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-import {Ridge0, Treeline, Ridge1, Ridge2, Moon, Ridge3} from '@assets';
+import {Ridge0, Ridge1, Ridge2, Ridge3, Treeline} from '@assets';
 import {Parallax, Preserve} from '@elements';
-import React, {ReactNode} from 'react';
+import React from 'react';
 
 function Banner() {
   const scaleFactor = 1;
