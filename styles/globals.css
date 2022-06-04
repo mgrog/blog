@@ -4,10 +4,11 @@
   --darker-primary: #001b33;
   --banner-height: 600px;
   --dark-neutral: #121212;
+  --sky-color: #7ea6d7;
 }
 
 html {
-  background-color: #121212;
+  background-color: var(--sky-color);
 }
 
 html,
