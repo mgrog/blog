@@ -28,7 +28,6 @@ export const Parallax = styled('div', {
         },
       },
       2: {
-        left: -1,
         '@bp0': {
           transform: 'translateZ(-0.7px) scale(0.4)',
           top: 340,
@@ -39,8 +38,9 @@ export const Parallax = styled('div', {
         },
       },
       3: {
+        left: -1,
         '@bp0': {
-          transform: 'translateZ(-1px) scale(0.4)',
+          transform: 'translateZ(-1px) scale(0.4) translateX(-200px)',
           top: 250,
         },
         '@bp2': {
@@ -56,7 +56,7 @@ export const Parallax = styled('div', {
         },
         '@bp2': {
           transform: 'translateZ(-1.3px)',
-          top: 310,
+          top: 380,
         },
       },
       5: {
@@ -79,6 +79,7 @@ export const Perspective = styled('div', {
   backgroundColor: '#121212',
   minHeight: '100vh',
   maxHeight: '100vh',
+  backfaceVisibility: 'hidden',
 });
 
 export const Preserve = styled('div', {
