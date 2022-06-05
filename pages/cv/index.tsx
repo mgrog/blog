@@ -59,7 +59,7 @@ const CV: NextPage<{}> = () => {
 const Skill = ({label, children}: {label: string; children: ReactNode}) => {
   return (
     <Box>
-      <SiteText alternate as='h3' size={2} weight={700} css={{marginTop: 0, marginBottom: 10}}>
+      <SiteText as='h3' size={2} weight={700} css={{marginTop: 0, marginBottom: 10}}>
         {label}
       </SiteText>
       <SiteText as='p' size={1} css={{margin: 0}}>

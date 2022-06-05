@@ -1,5 +1,5 @@
 import {Banner, NavBar} from '@components';
-import {ContentContainer, Flex, Perspective} from '@elements';
+import {ContentContainer, Flex, Perspective, SiteText} from '@elements';
 import type {AppProps} from 'next/app';
 import {useRouter} from 'next/router';
 import '../styles/globals.css';
@@ -11,6 +11,12 @@ function MyApp({Component, pageProps}: AppProps) {
   return (
     <Layout>
       <Perspective>
+        <SiteText
+          color='dark'
+          weight={900}
+          css={{position: 'absolute', top: 10, left: 30, zIndex: 998}}>
+          macro dev refinement
+        </SiteText>
         <NavBar />
         <Banner />
         <Content markdown={matchPost}>
@@ -51,7 +57,7 @@ function Content({markdown, children}: ContentProps) {
           fontSize: 14,
         },
         '@bp2': {
-          fontSize: 16,
+          fontSize: 18,
         },
       }}>
       {markdown ? <ContentContainer css={{minHeight: 500}}>{children}</ContentContainer> : children}

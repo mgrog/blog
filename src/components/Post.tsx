@@ -40,7 +40,7 @@ const Title = ({children}: {children: string}) => (
 );
 
 const SubTitle = ({children}: {children: ReactNode}) => (
-  <SiteText alternate weight={400} size={2} pad={0}>
+  <SiteText weight={400} size={2} pad={0}>
     {children}
   </SiteText>
 );
@@ -54,7 +54,7 @@ const Content = ({children}: {children: ReactNode}) => (
 const Tags = ({tags}: {tags: string[]}) => (
   <Flex css={{gap: 5}}>
     {tags.map((tag, i) => (
-      <SiteText as='h3' key={i} size={2} alternate weight={600} pad={0}>
+      <SiteText as='h3' key={i} size={2} weight={600} pad={0}>
         #{tag}
       </SiteText>
     ))}

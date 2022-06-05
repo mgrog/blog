@@ -2,14 +2,6 @@ import {styled} from '~/stitches.config';
 export const SiteText = styled('h1', {
   padding: 0,
   variants: {
-    alternate: {
-      true: {
-        fontFamily: 'Radio Canada',
-      },
-      false: {
-        fontFamily: 'Quicksand, sans-serif',
-      },
-    },
     size: {
       1: {
         fontSize: '1em',
@@ -44,6 +36,12 @@ export const SiteText = styled('h1', {
       },
       700: {
         fontWeight: 700,
+      },
+      800: {
+        fontWeight: 800,
+      },
+      900: {
+        fontWeight: 900,
       },
     },
     color: {
