@@ -1,6 +1,7 @@
 import {Banner, NavBar} from '@components';
-import {ContentContainer, Flex, Perspective, SiteText} from '@elements';
+import {Box, ContentContainer, Flex, Perspective, SiteText} from '@elements';
 import type {AppProps} from 'next/app';
+import Link from 'next/link';
 import {useRouter} from 'next/router';
 import '../styles/globals.css';
 
@@ -11,12 +12,24 @@ function MyApp({Component, pageProps}: AppProps) {
   return (
     <Layout>
       <Perspective>
-        <SiteText
-          color='dark'
-          weight={900}
-          css={{position: 'absolute', top: 10, left: 30, zIndex: 998}}>
-          macro dev refinement
-        </SiteText>
+        <Box
+          role='button'
+          onClick={() => router.push('/')}
+          css={{
+            position: 'absolute',
+            top: 10,
+            left: 30,
+            zIndex: 998,
+            cursor: 'pointer',
+          }}>
+          <SiteText size={3} color='dark' responsive='desktop' weight={900}>
+            macro dev refinement
+          </SiteText>
+          <SiteText size={3} color='dark' responsive='mobile' weight={900}>
+            mdr
+          </SiteText>
+        </Box>
+
         <NavBar />
         <Banner />
         <Content markdown={matchPost}>

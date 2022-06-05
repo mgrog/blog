@@ -52,6 +52,16 @@ export const SiteText = styled('h1', {
         color: '#000',
       },
     },
+    responsive: {
+      mobile: {
+        '@bp0': {display: 'block'},
+        '@bp1': {display: 'none'},
+      },
+      desktop: {
+        '@bp0': {display: 'none'},
+        '@bp1': {display: 'block'},
+      },
+    },
   },
   defaultVariants: {
     color: 'light',
