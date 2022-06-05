@@ -3,15 +3,20 @@ import {NextPage} from 'next';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import beachPic from '@assets/me-beach.jpg';
+import {useScrollTo} from '~/src/hooks/useScrollTo';
 
 const GetInTouch = dynamic(() => import('@pageMarkdown/GetInTouch.mdx'));
 
 const About: NextPage<{}> = () => {
+  const [scrollRef, parentRef] = useScrollTo<HTMLHeadingElement>();
+
   return (
-    <Flex col>
+    <Flex col ref={parentRef}>
       <Section>
         <ContentContainer>
-          <SiteText size={3}>I&apos;m Mike Grogan, a full stack developer based in the US</SiteText>
+          <SiteText ref={scrollRef} size={3}>
+            I&apos;m Mike Grogan, a full stack developer based in the US
+          </SiteText>
 
           <SiteText as='p' size={1}>
             I got my start building spas in angularjs and have been building them ever since.
