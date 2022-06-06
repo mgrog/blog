@@ -27,7 +27,6 @@ const NavBar = () => {
       <StyledNavBall
         aria-label='navigation'
         ref={ref}
-        role='navigation'
         tabIndex={0}
         className={className}
         onMouseEnter={() => setOpen(true)}
@@ -73,7 +72,7 @@ const Container = styled('div', {
   zIndex: 999,
 });
 
-const StyledNavBall = styled('div', {
+const StyledNavBall = styled('nav', {
   borderRadius: 999,
   height: 150,
   width: 150,
@@ -100,7 +99,9 @@ const StyledBar = styled(Flex, {
   '@media (prefers-reduced-motion)': {
     transition: 'none',
   },
-  pointerEvents: 'none',
+  '& a': {
+    pointerEvents: 'none',
+  },
   '&.open': {
     transition: 'opacity 150ms ease 80ms',
     opacity: 1,
