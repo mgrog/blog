@@ -6,6 +6,12 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <meta name='description' content="Mike Grogan's Blog" />
+          <meta name='author' content='Mike Grogan' />
+          <meta
+            name='keywords'
+            content='Mike Grogan, Michael Grogan, Typescript, Javascript, Elixir'
+          />
           <link
             href='https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700;800;900&family=Indie+Flower&display=swap'
             rel='stylesheet'
