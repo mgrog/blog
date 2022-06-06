@@ -3,6 +3,7 @@ import {NextPage} from 'next';
 import React, {ReactNode} from 'react';
 import {ContentContainer} from '@elements';
 import {useScrollTo} from '~/src/hooks/useScrollTo';
+import {styled} from '~/stitches.config';
 
 const CV: NextPage<{}> = () => {
   const [scrollRef, parentRef] = useScrollTo<HTMLHeadingElement>();
@@ -52,6 +53,13 @@ const CV: NextPage<{}> = () => {
           </Flex>
         </ContentContainer>
       </Section>
+      <Section color={2}>
+        <Flex centered>
+          <DlBtn href='/files/Resume.pdf' target='_blank' rel='noopener noreferrer'>
+            Download pdf
+          </DlBtn>
+        </Flex>
+      </Section>
     </Flex>
   );
 };
@@ -68,5 +76,21 @@ const Skill = ({label, children}: {label: string; children: ReactNode}) => {
     </Box>
   );
 };
+
+const DlBtn = styled('a', {
+  textDecoration: 'none',
+  padding: '10px 20px',
+  color: 'white',
+  backgroundColor: 'var(--primary)',
+  fontSize: '1.2em',
+  fontFamily: 'Maven Pro, sans-serif',
+  borderRadius: 999,
+  border: 'solid 3px $sky',
+  '&:hover, &:active': {
+    backgroundColor: '$darker-primary',
+    borderColor: '$primary',
+    color: '$primary',
+  },
+});
 
 export default CV;

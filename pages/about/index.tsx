@@ -2,7 +2,7 @@ import {ContentContainer, Flex, Section, SiteText} from '@elements';
 import {NextPage} from 'next';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import beachPic from '@assets/me-beach.jpg';
+import beachPic from '@assets/me-beach-2.jpg';
 import {useScrollTo} from '~/src/hooks/useScrollTo';
 
 const GetInTouch = dynamic(() => import('@pageMarkdown/GetInTouch.mdx'));

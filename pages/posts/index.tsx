@@ -56,7 +56,7 @@ export const getStaticProps: GetStaticProps = async () => {
       parse(b.published, 'M/d/yyyy', Date.now()),
     ),
   );
-  console.log(metadata);
+
   return {
     props: {metadata},
   };
