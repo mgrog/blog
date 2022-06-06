@@ -36,13 +36,13 @@ const NavBar = () => {
           <Link href='/' passHref>
             <NavItem>Home</NavItem>
           </Link>
-          <Link href='/posts' passHref>
+          <Link href='/posts' passHref scroll={false}>
             <NavItem>Blog Posts</NavItem>
           </Link>
-          <Link href='/cv' passHref>
+          <Link href='/cv' passHref scroll={false}>
             <NavItem>CV/Resume</NavItem>
           </Link>
-          <Link href='/about' passHref>
+          <Link href='/about' passHref scroll={false}>
             <NavItem>About Me</NavItem>
           </Link>
         </StyledBar>
@@ -101,12 +101,14 @@ const StyledBar = styled(Flex, {
   },
   '& a': {
     pointerEvents: 'none',
+    touchAction: 'none',
   },
   '&.open': {
     transition: 'opacity 150ms ease 80ms',
     opacity: 1,
     '& a': {
       pointerEvents: 'auto',
+      touchAction: 'auto',
     },
   },
   whiteSpace: 'nowrap',
