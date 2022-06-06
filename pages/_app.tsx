@@ -13,21 +13,34 @@ function MyApp({Component, pageProps}: AppProps) {
     <Layout>
       <Perspective>
         <Box
-          role='button'
-          onClick={() => router.push('/')}
           css={{
             position: 'absolute',
             top: 10,
             left: 30,
             zIndex: 998,
-            cursor: 'pointer',
           }}>
-          <SiteText size={3} color='dark' responsive='desktop' weight={900}>
-            macro dev refinement
-          </SiteText>
-          <SiteText size={3} color='dark' responsive='mobile' weight={900}>
-            mdr
-          </SiteText>
+          <Link href='/' passHref>
+            <SiteText
+              as='a'
+              className='banner'
+              size={3}
+              color='dark'
+              responsive='desktop'
+              weight={900}>
+              macro dev refinement
+            </SiteText>
+          </Link>
+          <Link href='/' passHref>
+            <SiteText
+              as='a'
+              className='banner'
+              size={3}
+              color='dark'
+              responsive='mobile'
+              weight={900}>
+              mdr
+            </SiteText>
+          </Link>
         </Box>
 
         <NavBar />

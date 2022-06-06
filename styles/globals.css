@@ -40,8 +40,12 @@ a {
   text-decoration-thickness: 3px;
 }
 
-a:hover {
+a:hover:not(.banner) {
   color: var(--primary);
+}
+
+a.banner {
+  text-decoration: none;
 }
 
 * {
