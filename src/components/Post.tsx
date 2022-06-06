@@ -1,4 +1,5 @@
 import {Flex, SiteText} from '@elements';
+import {format, parse} from 'date-fns';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, {ReactNode} from 'react';
@@ -9,7 +10,7 @@ type Props = {
   children?: ReactNode;
 } & Omit<MetaData, 'content'>;
 
-let Post = ({image, title, subtitle, postId, children, tags}: Props) => {
+let Post = ({image, title, subtitle, postId, children, tags, published}: Props) => {
   return (
     <StyledPost layout={{'@initial': 'col', '@bp2': +postId % 2 ? 'row' : 'reverse'}}>
       <PostImg>
@@ -24,6 +25,7 @@ let Post = ({image, title, subtitle, postId, children, tags}: Props) => {
       <PostChildren col layout={{'@initial': 'normal', '@bp1': 'w-min', '@bp2': 'h-fixed'}}>
         <Tags tags={tags} />
         <Title>{title}</Title>
+        <PublishedDate>{published}</PublishedDate>
         <SubTitle>{subtitle}</SubTitle>
         <Content>{children}</Content>
         <Link href={`/posts/${postId}`}>Read Post ➔</Link>
@@ -34,9 +36,14 @@ let Post = ({image, title, subtitle, postId, children, tags}: Props) => {
 
 const Title = ({children}: {children: string}) => (
   <StyledTitle
+    css={{marginBottom: 0}}
     nowrap={{'@initial': false, '@bp1': true}}
     dangerouslySetInnerHTML={{__html: children}}
   />
+);
+
+const PublishedDate = ({children}: {children: string}) => (
+  <SiteText size={1}>{format(parse(children, 'M/d/yyyy', Date.now()), "LLL d, ''yy")}</SiteText>
 );
 
 const SubTitle = ({children}: {children: ReactNode}) => (

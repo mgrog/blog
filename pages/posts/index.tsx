@@ -1,5 +1,6 @@
 import {Post} from '@components';
 import {ContentContainer, SiteText} from '@elements';
+import {compareDesc, parse} from 'date-fns';
 import fs from 'fs';
 import type {GetStaticProps, NextPage} from 'next';
 import {useScrollTo} from '~/src/hooks/useScrollTo';
@@ -49,6 +50,13 @@ export const getStaticProps: GetStaticProps = async () => {
       metadata.push(map);
     }
   }
+  metadata.sort((a, b) =>
+    compareDesc(
+      parse(a.published, 'M/d/yyyy', Date.now()),
+      parse(b.published, 'M/d/yyyy', Date.now()),
+    ),
+  );
+  console.log(metadata);
   return {
     props: {metadata},
   };
