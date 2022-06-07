@@ -7,7 +7,8 @@ import {styled} from '~/stitches.config';
 const NavBar = () => {
   const [open, setOpen] = useState(false);
   const [linksDisabled, setLinksDisabled] = useState(true);
-  let className = open ? 'open' : '';
+  let openClass = open ? 'open' : '';
+  let enabledClass = !linksDisabled ? 'enabled' : '';
   let ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -25,22 +26,15 @@ const NavBar = () => {
   }, [ref, setOpen]);
 
   useEffect(() => {
-    function handleTouchStart(event: TouchEvent) {
-      if (linksDisabled) {
-        event.preventDefault();
-      }
-    }
-    function handleTouchEnd(event: TouchEvent) {
+    function handleTouchEnd() {
       if (linksDisabled) {
         setTimeout(() => setLinksDisabled(false), 500);
       }
     }
 
-    document.addEventListener('touchstart', handleTouchStart);
     document.addEventListener('touchend', handleTouchEnd);
 
     return () => {
-      document.removeEventListener('touchstart', handleTouchStart);
       document.removeEventListener('touchend', handleTouchEnd);
     };
   }, [linksDisabled, setLinksDisabled]);
@@ -51,11 +45,11 @@ const NavBar = () => {
         aria-label='navigation'
         ref={ref}
         tabIndex={0}
-        className={className}
+        className={openClass}
         onMouseEnter={() => setOpen(true)}
         onMouseLeave={() => setOpen(false)}
         onClick={() => setOpen(true)}>
-        <StyledBar col h100 spaceBetween className={className}>
+        <StyledBar col h100 spaceBetween className={`${openClass} ${enabledClass}`}>
           <Link href='/' passHref>
             <NavItem>Home</NavItem>
           </Link>
@@ -131,8 +125,10 @@ const StyledBar = styled(Flex, {
     opacity: 1,
     '& a': {
       pointerEvents: 'auto',
-      touchAction: 'auto',
     },
+  },
+  '&.enabled a': {
+    touchAction: 'auto',
   },
   whiteSpace: 'nowrap',
 });
