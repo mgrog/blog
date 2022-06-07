@@ -6,6 +6,7 @@ import {styled} from '~/stitches.config';
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
+  const [linksClass, setLinksClass] = useState('');
 
   let openClass = open ? 'open' : '';
   let ref = useRef<HTMLDivElement>(null);
@@ -14,6 +15,7 @@ const NavBar = () => {
     function handleClickOutside(event: MouseEvent) {
       if (ref.current && !ref.current.contains(event.target as Node)) {
         setOpen(false);
+        setLinksClass('');
       }
     }
 
@@ -31,6 +33,13 @@ const NavBar = () => {
     setOpen(false);
   };
 
+  const handleClick = () => {
+    if (!open) {
+      setLinksClass('');
+    }
+    setOpen(true);
+  };
+
   return (
     <Container>
       <StyledNavBall
@@ -40,8 +49,13 @@ const NavBar = () => {
         className={openClass}
         onMouseEnter={handleEnter}
         onMouseLeave={handleLeave}
-        onMouseUp={() => setOpen(true)}>
-        <StyledLinks col h100 spaceBetween className={`${openClass} links`}>
+        onClick={handleClick}>
+        <StyledLinks
+          col
+          h100
+          spaceBetween
+          className={`${openClass} links ${linksClass}`}
+          onTransitionEnd={() => setLinksClass('enabled')}>
           <Link href='/' passHref>
             <NavItem>Home</NavItem>
           </Link>
@@ -94,15 +108,6 @@ const StyledNavBall = styled('nav', {
   '&.open': {
     width: 200,
   },
-
-  '& .links': {
-    pointerEvents: 'none',
-    touchAction: 'none',
-  },
-  '&:hover.open .links, &:focus.open .links': {
-    pointerEvents: 'auto',
-    touchAction: 'auto',
-  },
 });
 
 const StyledLinks = styled(Flex, {
@@ -118,9 +123,16 @@ const StyledLinks = styled(Flex, {
     transition: 'none',
   },
   '&.open': {
-    transition: 'opacity 150ms ease 80ms',
+    transition: 'opacity 150ms ease 300ms',
     opacity: 1,
   },
+  pointerEvents: 'none',
+  touchAction: 'none',
+  '&.enabled': {
+    pointerEvents: 'auto',
+    touchAction: 'auto',
+  },
+
   whiteSpace: 'nowrap',
 });
 
