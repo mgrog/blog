@@ -13,32 +13,22 @@ const NavBar = () => {
   let ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
+    let tid: ReturnType<typeof setTimeout>;
+    function handleClick(event: MouseEvent) {
       if (ref.current && !ref.current.contains(event.target as Node)) {
         setOpen(false);
         setLinksDisabled(true);
+      } else {
+        tid = setTimeout(() => setLinksDisabled(false), 450);
       }
     }
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('mousedown', handleClick);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('mousedown', handleClick);
+      clearTimeout(tid);
     };
   }, [ref]);
-
-  useEffect(() => {
-    function handleTouchEnd(event: TouchEvent) {
-      if (linksDisabled && ref.current && ref.current.contains(event.target as Node)) {
-        setTimeout(() => setLinksDisabled(false), 450);
-      }
-    }
-
-    document.addEventListener('touchend', handleTouchEnd);
-
-    return () => {
-      document.removeEventListener('touchend', handleTouchEnd);
-    };
-  }, [linksDisabled]);
 
   const handleEnter = () => {
     setOpen(true);
