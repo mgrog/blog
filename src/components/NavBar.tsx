@@ -40,7 +40,7 @@ const NavBar = () => {
 
   const handleClick = () => {
     setOpen(true);
-    setTimeout(() => setLinksDisabled(true), 250);
+    setTimeout(() => setLinksDisabled(false), 1500);
   };
 
   return (
