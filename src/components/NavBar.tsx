@@ -6,9 +6,11 @@ import {styled} from '~/stitches.config';
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
+  const [touchEnabled, setTouchEnabled] = useState(false);
   const [linksDisabled, setLinksDisabled] = useState(true);
+
   let openClass = open ? 'open' : '';
-  let enabledClass = !linksDisabled ? 'enabled' : '';
+  let touchClass = touchEnabled ? 'touch-enabled' : '';
   let ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -26,18 +28,32 @@ const NavBar = () => {
   }, [ref, setOpen]);
 
   useEffect(() => {
+    function handleTouchStart(e: TouchEvent) {
+      if (linksDisabled) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+      }
+    }
+
     function handleTouchEnd() {
       if (linksDisabled) {
         setTimeout(() => setLinksDisabled(false), 500);
       }
     }
 
+    document.addEventListener('touchstart', handleTouchStart);
     document.addEventListener('touchend', handleTouchEnd);
 
     return () => {
+      document.removeEventListener('touchstart', handleTouchStart);
       document.removeEventListener('touchend', handleTouchEnd);
     };
   }, [linksDisabled, setLinksDisabled]);
+
+  useEffect(() => {
+    const isTouchEnabled = window?.ontouchstart || navigator.maxTouchPoints > 0;
+    setTouchEnabled(Boolean(isTouchEnabled));
+  }, []);
 
   return (
     <Container>
@@ -49,7 +65,7 @@ const NavBar = () => {
         onMouseEnter={() => setOpen(true)}
         onMouseLeave={() => setOpen(false)}
         onClick={() => setOpen(true)}>
-        <StyledBar col h100 spaceBetween className={`${openClass} ${enabledClass}`}>
+        <StyledBar col h100 spaceBetween className={`${openClass} ${touchClass}`}>
           <Link href='/' passHref>
             <NavItem>Home</NavItem>
           </Link>
@@ -118,7 +134,6 @@ const StyledBar = styled(Flex, {
   },
   '& a': {
     pointerEvents: 'none',
-    touchAction: 'none',
   },
   '&.open': {
     transition: 'opacity 150ms ease 80ms',
@@ -127,8 +142,14 @@ const StyledBar = styled(Flex, {
       pointerEvents: 'auto',
     },
   },
-  '&.enabled a': {
-    touchAction: 'auto',
+  '&.touch-enabled': {
+    '& a': {
+      display: 'none',
+    },
+    '&.open a': {
+      transition: 'display 0ms none 500ms',
+      display: 'block',
+    },
   },
   whiteSpace: 'nowrap',
 });
