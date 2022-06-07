@@ -25,23 +25,25 @@ const NavBar = () => {
   }, [ref, setOpen]);
 
   useEffect(() => {
-    function handleTouch(event: TouchEvent) {
+    function handleTouchStart(event: TouchEvent) {
       if (linksDisabled) {
         event.preventDefault();
       }
     }
+    function handleTouchEnd(event: TouchEvent) {
+      if (linksDisabled) {
+        setLinksDisabled(false);
+      }
+    }
 
-    document.addEventListener('touchstart', handleTouch);
+    document.addEventListener('touchstart', handleTouchStart);
+    document.addEventListener('touchend', handleTouchEnd);
 
     return () => {
-      document.removeEventListener('touchstart', handleTouch);
+      document.removeEventListener('touchstart', handleTouchStart);
+      document.removeEventListener('touchend', handleTouchEnd);
     };
-  }, [linksDisabled]);
-
-  const handleClick = () => {
-    setOpen(true);
-    setTimeout(() => setLinksDisabled(false), 1500);
-  };
+  }, [linksDisabled, setLinksDisabled]);
 
   return (
     <Container>
@@ -52,7 +54,7 @@ const NavBar = () => {
         className={className}
         onMouseEnter={() => setOpen(true)}
         onMouseLeave={() => setOpen(false)}
-        onClick={handleClick}>
+        onClick={() => setOpen(true)}>
         <StyledBar col h100 spaceBetween className={className}>
           <Link href='/' passHref>
             <NavItem>Home</NavItem>
