@@ -1,7 +1,6 @@
 import {Flex} from '@elements';
 import Link from 'next/link';
 import React, {useEffect, useRef, useState} from 'react';
-import {flushSync} from 'react-dom';
 import {Github, LinkedIn, Telegram} from '~/icons';
 import {styled} from '~/stitches.config';
 
@@ -14,18 +13,25 @@ const NavBar = () => {
 
   useEffect(() => {
     let tid: ReturnType<typeof setTimeout>;
-    function handleClick(event: MouseEvent) {
+    function handleClickOutside(event: MouseEvent) {
       if (ref.current && !ref.current.contains(event.target as Node)) {
         setOpen(false);
         setLinksDisabled(true);
-      } else {
+      }
+    }
+
+    function handleTouch(event: MouseEvent) {
+      if (ref.current && ref.current.contains(event.target as Node)) {
+        setOpen(true);
         tid = setTimeout(() => setLinksDisabled(false), 450);
       }
     }
 
-    document.addEventListener('mousedown', handleClick);
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('mouseup', handleTouch);
     return () => {
-      document.removeEventListener('mousedown', handleClick);
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('mouseup', handleTouch);
       clearTimeout(tid);
     };
   }, [ref]);
@@ -48,8 +54,7 @@ const NavBar = () => {
         tabIndex={0}
         className={openClass}
         onMouseEnter={handleEnter}
-        onMouseLeave={handleLeave}
-        onClick={() => setOpen(true)}>
+        onMouseLeave={handleLeave}>
         {!linksDisabled && <PageLinks />}
         <Tip>nav here!</Tip>
       </StyledNavBall>
