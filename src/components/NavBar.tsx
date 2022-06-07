@@ -6,44 +6,29 @@ import {styled} from '~/stitches.config';
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
-  const [linksDisabled, setLinksDisabled] = useState(true);
 
   let openClass = open ? 'open' : '';
   let ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let tid: ReturnType<typeof setTimeout>;
     function handleClickOutside(event: MouseEvent) {
       if (ref.current && !ref.current.contains(event.target as Node)) {
         setOpen(false);
-        setLinksDisabled(true);
-      }
-    }
-
-    function handleTouch(event: MouseEvent) {
-      if (ref.current && ref.current.contains(event.target as Node)) {
-        setOpen(true);
-        tid = setTimeout(() => setLinksDisabled(false), 450);
       }
     }
 
     document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('mouseup', handleTouch);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('mouseup', handleTouch);
-      clearTimeout(tid);
     };
   }, [ref]);
 
   const handleEnter = () => {
     setOpen(true);
-    setLinksDisabled(false);
   };
 
   const handleLeave = () => {
     setOpen(false);
-    setLinksDisabled(true);
   };
 
   return (
@@ -54,8 +39,22 @@ const NavBar = () => {
         tabIndex={0}
         className={openClass}
         onMouseEnter={handleEnter}
-        onMouseLeave={handleLeave}>
-        {!linksDisabled && <PageLinks />}
+        onMouseLeave={handleLeave}
+        onMouseUp={() => setOpen(true)}>
+        <StyledLinks col h100 spaceBetween className={`${openClass} links`}>
+          <Link href='/' passHref>
+            <NavItem>Home</NavItem>
+          </Link>
+          <Link href='/posts' passHref scroll={false}>
+            <NavItem>Blog Posts</NavItem>
+          </Link>
+          <Link href='/cv' passHref scroll={false}>
+            <NavItem>CV/Resume</NavItem>
+          </Link>
+          <Link href='/about' passHref scroll={false}>
+            <NavItem>About Me</NavItem>
+          </Link>
+        </StyledLinks>
         <Tip>nav here!</Tip>
       </StyledNavBall>
       <Flex col css={{position: 'absolute', left: 'calc(100% + 10px)', top: -10, gap: 20}}>
@@ -70,40 +69,6 @@ const NavBar = () => {
         </IconBtn>
       </Flex>
     </Container>
-  );
-};
-
-const PageLinks = () => {
-  const [visibility, setVisibilty] = useState('');
-  const transitionComplete = useRef(false);
-
-  useEffect(() => {
-    let timeId: ReturnType<typeof setTimeout>;
-    if (!transitionComplete.current) {
-      timeId = setTimeout(() => setVisibilty('visible'), 50);
-      transitionComplete.current = true;
-    }
-    return () => {
-      clearTimeout(timeId);
-      transitionComplete.current = false;
-    };
-  }, []);
-
-  return (
-    <StyledBar col h100 spaceBetween className={visibility}>
-      <Link href='/' passHref>
-        <NavItem>Home</NavItem>
-      </Link>
-      <Link href='/posts' passHref scroll={false}>
-        <NavItem>Blog Posts</NavItem>
-      </Link>
-      <Link href='/cv' passHref scroll={false}>
-        <NavItem>CV/Resume</NavItem>
-      </Link>
-      <Link href='/about' passHref scroll={false}>
-        <NavItem>About Me</NavItem>
-      </Link>
-    </StyledBar>
   );
 };
 
@@ -129,9 +94,18 @@ const StyledNavBall = styled('nav', {
   '&.open': {
     width: 200,
   },
+
+  '& .links': {
+    pointerEvents: 'none',
+    touchAction: 'none',
+  },
+  '&:hover.open .links, &:focus.open .links': {
+    pointerEvents: 'auto',
+    touchAction: 'auto',
+  },
 });
 
-const StyledBar = styled(Flex, {
+const StyledLinks = styled(Flex, {
   position: 'relative',
   opacity: 0,
   top: 0,
@@ -143,8 +117,8 @@ const StyledBar = styled(Flex, {
   '@media (prefers-reduced-motion)': {
     transition: 'none',
   },
-  transition: 'opacity 150ms ease',
-  '&.visible': {
+  '&.open': {
+    transition: 'opacity 150ms ease 80ms',
     opacity: 1,
   },
   whiteSpace: 'nowrap',
