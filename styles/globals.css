@@ -17,7 +17,7 @@ body {
   margin: 0;
   font-family: 'Maven Pro', sans-serif;
   color: white;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 h1,
