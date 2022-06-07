@@ -40,6 +40,10 @@ const NavBar = () => {
     setOpen(true);
   };
 
+  const handleOnTransitionEnd = () => {
+    setLinksClass('enabled');
+  };
+
   return (
     <Container>
       <StyledNavBall
@@ -55,7 +59,7 @@ const NavBar = () => {
           h100
           spaceBetween
           className={`${openClass} links ${linksClass}`}
-          onTransitionEnd={() => setLinksClass('enabled')}>
+          onTransitionEnd={handleOnTransitionEnd}>
           <Link href='/' passHref>
             <NavItem>Home</NavItem>
           </Link>
@@ -91,7 +95,7 @@ export {NavBar};
 const Container = styled('div', {
   position: 'absolute',
   right: 60,
-  top: 20,
+  top: 50,
   zIndex: 999,
 });
 

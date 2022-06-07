@@ -15,7 +15,7 @@ function MyApp({Component, pageProps}: AppProps) {
         <Box
           css={{
             position: 'absolute',
-            top: 10,
+            top: 40,
             left: 30,
             zIndex: 998,
           }}>
