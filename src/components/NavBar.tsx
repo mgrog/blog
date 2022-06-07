@@ -32,7 +32,7 @@ const NavBar = () => {
     }
     function handleTouchEnd(event: TouchEvent) {
       if (linksDisabled) {
-        setLinksDisabled(false);
+        setTimeout(() => setLinksDisabled(false), 500);
       }
     }
 
