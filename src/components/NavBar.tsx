@@ -1,16 +1,15 @@
 import {Flex} from '@elements';
 import Link from 'next/link';
 import React, {useEffect, useRef, useState} from 'react';
+import {flushSync} from 'react-dom';
 import {Github, LinkedIn, Telegram} from '~/icons';
 import {styled} from '~/stitches.config';
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
-  const [touchEnabled, setTouchEnabled] = useState(false);
   const [linksDisabled, setLinksDisabled] = useState(true);
 
   let openClass = open ? 'open' : '';
-  let touchClass = touchEnabled ? 'touch-enabled' : '';
   let ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -25,35 +24,31 @@ const NavBar = () => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [ref, setOpen]);
+  }, [ref]);
 
   useEffect(() => {
-    function handleTouchStart(e: TouchEvent) {
-      if (linksDisabled) {
-        e.preventDefault();
-        e.stopImmediatePropagation();
-      }
-    }
-
     function handleTouchEnd() {
       if (linksDisabled) {
-        setTimeout(() => setLinksDisabled(false), 500);
+        setTimeout(() => setLinksDisabled(false), 450);
       }
     }
 
-    document.addEventListener('touchstart', handleTouchStart);
     document.addEventListener('touchend', handleTouchEnd);
 
     return () => {
-      document.removeEventListener('touchstart', handleTouchStart);
       document.removeEventListener('touchend', handleTouchEnd);
     };
-  }, [linksDisabled, setLinksDisabled]);
+  }, [linksDisabled]);
 
-  useEffect(() => {
-    const isTouchEnabled = window?.ontouchstart || navigator.maxTouchPoints > 0;
-    setTouchEnabled(Boolean(isTouchEnabled));
-  }, []);
+  const handleEnter = () => {
+    setOpen(true);
+    setLinksDisabled(false);
+  };
+
+  const handleLeave = () => {
+    setOpen(false);
+    setLinksDisabled(true);
+  };
 
   return (
     <Container>
@@ -62,23 +57,10 @@ const NavBar = () => {
         ref={ref}
         tabIndex={0}
         className={openClass}
-        onMouseEnter={() => setOpen(true)}
-        onMouseLeave={() => setOpen(false)}
+        onMouseEnter={handleEnter}
+        onMouseLeave={handleLeave}
         onClick={() => setOpen(true)}>
-        <StyledBar col h100 spaceBetween className={`${openClass} ${touchClass}`}>
-          <Link href='/' passHref>
-            <NavItem>Home</NavItem>
-          </Link>
-          <Link href='/posts' passHref scroll={false}>
-            <NavItem>Blog Posts</NavItem>
-          </Link>
-          <Link href='/cv' passHref scroll={false}>
-            <NavItem>CV/Resume</NavItem>
-          </Link>
-          <Link href='/about' passHref scroll={false}>
-            <NavItem>About Me</NavItem>
-          </Link>
-        </StyledBar>
+        {!linksDisabled && <PageLinks />}
         <Tip>nav here!</Tip>
       </StyledNavBall>
       <Flex col css={{position: 'absolute', left: 'calc(100% + 10px)', top: -10, gap: 20}}>
@@ -93,6 +75,40 @@ const NavBar = () => {
         </IconBtn>
       </Flex>
     </Container>
+  );
+};
+
+const PageLinks = () => {
+  const [visibility, setVisibilty] = useState('');
+  const transitionComplete = useRef(false);
+
+  useEffect(() => {
+    let timeId: ReturnType<typeof setTimeout>;
+    if (!transitionComplete.current) {
+      timeId = setTimeout(() => setVisibilty('visible'), 50);
+      transitionComplete.current = true;
+    }
+    return () => {
+      clearTimeout(timeId);
+      transitionComplete.current = false;
+    };
+  }, []);
+
+  return (
+    <StyledBar col h100 spaceBetween className={visibility}>
+      <Link href='/' passHref>
+        <NavItem>Home</NavItem>
+      </Link>
+      <Link href='/posts' passHref scroll={false}>
+        <NavItem>Blog Posts</NavItem>
+      </Link>
+      <Link href='/cv' passHref scroll={false}>
+        <NavItem>CV/Resume</NavItem>
+      </Link>
+      <Link href='/about' passHref scroll={false}>
+        <NavItem>About Me</NavItem>
+      </Link>
+    </StyledBar>
   );
 };
 
@@ -132,24 +148,9 @@ const StyledBar = styled(Flex, {
   '@media (prefers-reduced-motion)': {
     transition: 'none',
   },
-  '& a': {
-    pointerEvents: 'none',
-  },
-  '&.open': {
-    transition: 'opacity 150ms ease 80ms',
+  transition: 'opacity 150ms ease',
+  '&.visible': {
     opacity: 1,
-    '& a': {
-      pointerEvents: 'auto',
-    },
-  },
-  '&.touch-enabled': {
-    '& a': {
-      display: 'none',
-    },
-    '&.open a': {
-      transition: 'display 0ms none 500ms',
-      display: 'block',
-    },
   },
   whiteSpace: 'nowrap',
 });
