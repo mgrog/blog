@@ -27,8 +27,8 @@ const NavBar = () => {
   }, [ref]);
 
   useEffect(() => {
-    function handleTouchEnd() {
-      if (linksDisabled) {
+    function handleTouchEnd(event: TouchEvent) {
+      if (linksDisabled && ref.current && ref.current.contains(event.target as Node)) {
         setTimeout(() => setLinksDisabled(false), 450);
       }
     }
