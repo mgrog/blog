@@ -6,6 +6,7 @@ import {styled} from '~/stitches.config';
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
+  const [linksDisabled, setLinksDisabled] = useState(true);
   let className = open ? 'open' : '';
   let ref = useRef<HTMLDivElement>(null);
 
@@ -13,6 +14,7 @@ const NavBar = () => {
     function handleClickOutside(event: MouseEvent) {
       if (ref.current && !ref.current.contains(event.target as Node)) {
         setOpen(false);
+        setLinksDisabled(true);
       }
     }
 
@@ -21,6 +23,25 @@ const NavBar = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [ref, setOpen]);
+
+  useEffect(() => {
+    function handleTouch(event: TouchEvent) {
+      if (linksDisabled) {
+        event.preventDefault();
+      }
+    }
+
+    document.addEventListener('touchstart', handleTouch);
+
+    return () => {
+      document.removeEventListener('touchstart', handleTouch);
+    };
+  }, [linksDisabled]);
+
+  const handleClick = () => {
+    setOpen(true);
+    setTimeout(() => setLinksDisabled(true), 250);
+  };
 
   return (
     <Container>
@@ -31,7 +52,7 @@ const NavBar = () => {
         className={className}
         onMouseEnter={() => setOpen(true)}
         onMouseLeave={() => setOpen(false)}
-        onClick={() => setOpen(true)}>
+        onClick={handleClick}>
         <StyledBar col h100 spaceBetween className={className}>
           <Link href='/' passHref>
             <NavItem>Home</NavItem>
