@@ -1,11 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import {Ridge0, Ridge1, Ridge2, Ridge3, Sky, Treeline} from '@assets/banner-layers';
-import {Parallax, Preserve} from '@elements';
+import {Parallax, Preserve, Box} from '@elements';
 import React from 'react';
 
 function Banner() {
   return (
-    <Preserve aria-label='layers of mountains in the distance, trees are in the foreground, the perspective shifts as you move down the page'>
+    <Preserve aria-label='illustration of layers of mountains in the distance, trees are in the foreground, the perspective shifts as you move down the page'>
       <Parallax layer={0}>
         <Ridge0 height={500} />
       </Parallax>
@@ -22,7 +22,7 @@ function Banner() {
         <Ridge3 height={1000} />
       </Parallax>
       <Parallax layer={5}>
-        <Sky height={1000} />
+        <Box css={{backgroundColor: '$sky', height: 1200, overflow: 'hidden'}} />
       </Parallax>
     </Preserve>
   );

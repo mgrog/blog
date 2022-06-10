@@ -55,7 +55,7 @@ function MyApp({Component, pageProps}: AppProps) {
 
 function Layout({children}: {children: React.ReactNode}) {
   return (
-    <Flex col centered w100>
+    <Flex col centered>
       {children}
     </Flex>
   );

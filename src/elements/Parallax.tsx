@@ -5,6 +5,8 @@ export const Parallax = styled('div', {
   left: -1,
   overflowX: 'visible',
   transformOrigin: 'left',
+  width: '100%',
+  pointerEvents: 'none',
   variants: {
     layer: {
       0: {
@@ -60,7 +62,7 @@ export const Parallax = styled('div', {
         },
       },
       5: {
-        transform: 'translateZ(-2px) scale(1.5)',
+        transform: 'translateZ(-1.4px) scaleX(4)',
         top: 0,
       },
     },
@@ -68,13 +70,12 @@ export const Parallax = styled('div', {
 });
 
 export const Perspective = styled('div', {
-  paddingTop: 100,
   perspective: 1,
   perspectiveOrigin: 'top left',
   overflowY: 'scroll',
   '-webkit-overflow-scrolling': 'touch',
   overflowX: 'hidden',
-  width: '100%',
+  width: '100vw',
   // backgroundColor: '#7EA6D7',
   backgroundColor: '#121212',
   minHeight: '100vh',
@@ -85,5 +86,6 @@ export const Perspective = styled('div', {
 export const Preserve = styled('div', {
   transformStyle: 'preserve-3d',
   height: '$banner-height',
-  overflow: 'visible',
+  width: '100vw',
+  overflowX: 'visible',
 });

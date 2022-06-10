@@ -9,6 +9,7 @@
 
 html {
   background-color: var(--sky-color);
+  scrollbar-color: var(--sky-color) var(--dark-primary);
 }
 
 html,
@@ -17,7 +18,25 @@ body {
   margin: 0;
   font-family: 'Maven Pro', sans-serif;
   color: white;
-  /* overflow: hidden; */
+  overflow: hidden;
+  max-width: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background: var(--darker-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 999px;
+  border-radius: 999px;
+  border: 3px solid var(--darker-primary);
+  background: var(--sky-color);
 }
 
 h1,

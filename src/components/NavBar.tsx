@@ -94,7 +94,7 @@ export {NavBar};
 
 const Container = styled('div', {
   position: 'absolute',
-  right: 60,
+  right: 65,
   top: 50,
   zIndex: 999,
 });
@@ -122,7 +122,7 @@ const StyledLinks = styled(Flex, {
   backgroundColor: 'transparent',
   borderTopLeftRadius: 15,
   borderBottomLeftRadius: 15,
-  padding: '20px 30px',
+  padding: '20px 0 20px 50px',
   '@media (prefers-reduced-motion)': {
     transition: 'none',
   },
