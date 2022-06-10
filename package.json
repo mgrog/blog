@@ -15,9 +15,11 @@
     "babel-plugin-inline-react-svg": "^2.0.1",
     "date-fns": "^2.28.0",
     "next": "12.1.5",
+    "plaiceholder": "^2.3.0",
     "react": "18.1.0",
     "react-dom": "18.1.0",
-    "react-syntax-highlighter": "^15.5.0"
+    "react-syntax-highlighter": "^15.5.0",
+    "sharp": "^0.30.6"
   },
   "devDependencies": {
     "@mdx-js/mdx": "^2.1.1",

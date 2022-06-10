@@ -6,17 +6,19 @@ import React, {ReactNode} from 'react';
 import {styled} from '~/stitches.config';
 
 type Props = {
-  image: string;
+  imgProps: ImgProps;
   children?: ReactNode;
 } & Omit<MetaData, 'content'>;
 
-let Post = ({image, title, subtitle, postId, children, tags, published}: Props) => {
+let Post = ({imgProps, title, subtitle, postId, children, tags, published}: Props) => {
   return (
     <StyledPost layout={{'@initial': 'col', '@bp2': +postId % 2 ? 'row' : 'reverse'}}>
       <PostImg>
         <Image
+          {...imgProps}
+          placeholder='blur'
           layout={'fill'}
-          src={image}
+          quality={40}
           alt='post image'
           objectFit='contain'
           objectPosition='left'

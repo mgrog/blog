@@ -4,6 +4,7 @@ import {compareDesc, parse} from 'date-fns';
 import fs from 'fs';
 import type {GetStaticProps, NextPage} from 'next';
 import {useScrollTo} from '~/src/hooks/useScrollTo';
+import {getPlaiceholder} from 'plaiceholder';
 
 const Posts: NextPage<{metadata: MetaData[]}> = ({metadata}: {metadata: MetaData[]}) => {
   const [ref, parentRef] = useScrollTo<HTMLHeadingElement>();
@@ -17,7 +18,7 @@ const Posts: NextPage<{metadata: MetaData[]}> = ({metadata}: {metadata: MetaData
         <Post
           key={meta.postId}
           postId={meta.postId}
-          image={`/post-images/${meta.postId}.jpeg`}
+          imgProps={meta.imgProps}
           title={meta.title}
           subtitle={meta.subtitle}
           published={meta.published}
@@ -30,13 +31,15 @@ const Posts: NextPage<{metadata: MetaData[]}> = ({metadata}: {metadata: MetaData
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  let metadata: any[] = [];
+  let metadata: MetaData[] = [];
 
   for (let file of fs.readdirSync('./pages/posts')) {
     if (file.includes('.mdx')) {
       let {meta} = await import(`./${file}`);
 
       let [postNum] = file.split('.');
+
+      const {base64, img} = await getPlaiceholder(`/post-images/${postNum}.jpeg`, {size: 10});
 
       let map = {
         postId: postNum,
@@ -45,6 +48,10 @@ export const getStaticProps: GetStaticProps = async () => {
         content: meta?.snippet || null,
         tags: meta?.tags || null,
         published: meta?.published || null,
+        imgProps: {
+          ...img,
+          blurDataURL: base64,
+        },
       };
 
       metadata.push(map);
