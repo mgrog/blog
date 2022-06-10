@@ -28,7 +28,7 @@ let Post = ({image, title, subtitle, postId, children, tags, published}: Props) 
         <PublishedDate>{published}</PublishedDate>
         <SubTitle>{subtitle}</SubTitle>
         <Content>{children}</Content>
-        <Link href={`/posts/${postId}`}>Read Post ➔</Link>
+        <Link href={`/posts/${postId}`}>Read Post &rarr;</Link>
       </PostChildren>
     </StyledPost>
   );
