@@ -1,11 +1,9 @@
-import {ContentContainer, Flex, Section, SiteText} from '@elements';
-import {NextPage} from 'next';
-import dynamic from 'next/dynamic';
-import Image from 'next/image';
 import beachPic from '@assets/me-beach-2.jpg';
+import {ContentContainer, Flex, Section, SiteText} from '@elements';
+import GetInTouch from '@pageMarkdown/GetInTouch.mdx';
+import {NextPage} from 'next';
+import Image from 'next/image';
 import {useScrollTo} from '~/src/hooks/useScrollTo';
-
-const GetInTouch = dynamic(() => import('@pageMarkdown/GetInTouch.mdx'));
 
 const About: NextPage<{}> = () => {
   const [scrollRef, parentRef] = useScrollTo<HTMLHeadingElement>();
