@@ -2,18 +2,15 @@ import {Flex, SiteText, Section, Box} from '@elements';
 import {NextPage} from 'next';
 import React, {ReactNode} from 'react';
 import {ContentContainer} from '@elements';
-import {useScrollTo} from '~/src/hooks/useScrollTo';
 import {styled} from '~/stitches.config';
 
 const CV: NextPage<{}> = () => {
-  const [scrollRef, parentRef] = useScrollTo<HTMLHeadingElement>();
-
   return (
-    <Flex col ref={parentRef}>
+    <Flex col>
       <Section>
         <ContentContainer>
           <SiteText as='h1'>CV/Resume</SiteText>
-          <SiteText as='p' size={1} ref={scrollRef}>
+          <SiteText as='p' size={1}>
             Michael Grogan is a senior fullstack developer with an emphasis on frontend
             technologies. His industry experience spans 7 years and includes react, react-native,
             angular, node, elixir, graphQL, and docker technologies. He has led small teams and

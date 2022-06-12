@@ -81,6 +81,7 @@ export const Perspective = styled('div', {
   minHeight: '100vh',
   maxHeight: '100vh',
   backfaceVisibility: 'hidden',
+  scrollBehavior: 'smooth',
 });
 
 export const Preserve = styled('div', {

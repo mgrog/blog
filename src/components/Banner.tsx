@@ -6,7 +6,7 @@ import React from 'react';
 function Banner() {
   return (
     <Preserve aria-label='illustration of layers of mountains in the distance, trees are in the foreground, the perspective shifts as you move down the page'>
-      <Parallax layer={0}>
+      <Parallax layer={0} id='top'>
         <Ridge0 height={500} />
       </Parallax>
       <Parallax layer={1}>

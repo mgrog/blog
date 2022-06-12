@@ -3,18 +3,13 @@ import {ContentContainer, Flex, Section, SiteText} from '@elements';
 import GetInTouch from '@pageMarkdown/GetInTouch.mdx';
 import {NextPage} from 'next';
 import Image from 'next/image';
-import {useScrollTo} from '~/src/hooks/useScrollTo';
 
 const About: NextPage<{}> = () => {
-  const [scrollRef, parentRef] = useScrollTo<HTMLHeadingElement>();
-
   return (
-    <Flex col ref={parentRef}>
+    <Flex col>
       <Section>
         <ContentContainer>
-          <SiteText ref={scrollRef}>
-            I&apos;m Mike Grogan, a full stack developer based in the US
-          </SiteText>
+          <SiteText>I&apos;m Mike Grogan, a full stack developer based in the US</SiteText>
 
           <SiteText as='p' size={1}>
             I got my start building spas in angularjs and have been building them ever since.

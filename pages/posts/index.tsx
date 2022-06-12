@@ -3,17 +3,12 @@ import {ContentContainer, SiteText} from '@elements';
 import {compareDesc, parse} from 'date-fns';
 import fs from 'fs';
 import type {GetStaticProps, NextPage} from 'next';
-import {useScrollTo} from '~/src/hooks/useScrollTo';
 import {getPlaiceholder} from 'plaiceholder';
 
 const Posts: NextPage<{metadata: MetaData[]}> = ({metadata}: {metadata: MetaData[]}) => {
-  const [ref, parentRef] = useScrollTo<HTMLHeadingElement>();
-
   return (
-    <ContentContainer ref={parentRef} css={{paddingBottom: 50}}>
-      <SiteText ref={ref} pad={1}>
-        Posts
-      </SiteText>
+    <ContentContainer css={{paddingBottom: 50}}>
+      <SiteText pad={1}>Posts</SiteText>
       {metadata.map((meta) => (
         <Post
           key={meta.postId}

@@ -63,13 +63,13 @@ const NavBar = () => {
           <Link href='/' passHref>
             <NavItem>Home</NavItem>
           </Link>
-          <Link href='/posts' passHref scroll={false}>
+          <Link href='/posts#top' passHref scroll={false}>
             <NavItem>Blog Posts</NavItem>
           </Link>
-          <Link href='/cv' passHref scroll={false}>
+          <Link href='/cv#top' passHref scroll={false}>
             <NavItem>CV/Resume</NavItem>
           </Link>
-          <Link href='/about' passHref scroll={false}>
+          <Link href='/about#top' passHref scroll={false}>
             <NavItem>About Me</NavItem>
           </Link>
         </StyledLinks>
