@@ -1,5 +1,3 @@
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import {hopscotch} from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 export const meta = {
   title: 'Learn Elixir by Doing (&nbsp;part&nbsp;1&nbsp;)',
   subtitle: "Mess up your prototype so you don't do it on the real thing",
@@ -7,6 +5,8 @@ export const meta = {
   tags: ['elixir', 'guides'],
   published: '7/2/2022',
 };
+
+import 'prism-themes/themes/prism-coldark-dark.css';
 
 # Learn Elixir by Doing <pre>( part 1 )</pre>
 
@@ -42,12 +42,10 @@ I won't go too far into it, but post 1.3 you need to organize your code into con
 The idiom is a little vague by design, as it leaves some choices up to you, but the phoenix hexdocs give a pretty good explanation to get you thinking in the right direction.
 The main point is, if you see some old elixir code snippets that don't make sense, it's likely pre 1.3 code. It's something that stumped me a bit early on.
 
-<SyntaxHighlighter language={'elixir'} style={hopscotch}>
-  {`
-  def create_event(attrs \\ %{}) do 
+```elixir
+  def create_event(attrs \\ %{}) do
     %Event{}
-    |> Event.changeset(attrs) 
-    |> Repo.insert() 
-  end 
-  `}
-</SyntaxHighlighter>
+    |> Event.changeset(attrs)
+    |> Repo.insert()
+  end
+```
