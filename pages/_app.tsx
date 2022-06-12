@@ -23,7 +23,7 @@ function MyApp({Component, pageProps}: AppProps) {
             <SiteText
               as='a'
               className='banner'
-              size={3}
+              size={4}
               color='dark'
               responsive='desktop'
               weight={900}>
@@ -34,7 +34,7 @@ function MyApp({Component, pageProps}: AppProps) {
             <SiteText
               as='a'
               className='banner'
-              size={3}
+              size={4}
               color='dark'
               responsive='mobile'
               weight={900}>

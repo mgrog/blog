@@ -12,9 +12,7 @@ const CV: NextPage<{}> = () => {
     <Flex col ref={parentRef}>
       <Section>
         <ContentContainer>
-          <SiteText as='h1' size={3}>
-            CV/Resume
-          </SiteText>
+          <SiteText as='h1'>CV/Resume</SiteText>
           <SiteText as='p' size={1} ref={scrollRef}>
             Michael Grogan is a senior fullstack developer with an emphasis on frontend
             technologies. His industry experience spans 7 years and includes react, react-native,
@@ -67,7 +65,7 @@ const CV: NextPage<{}> = () => {
 const Skill = ({label, children}: {label: string; children: ReactNode}) => {
   return (
     <Box>
-      <SiteText as='h3' size={2} weight={700} css={{marginTop: 0, marginBottom: 10}}>
+      <SiteText as='h3' size={3} weight={700} css={{marginTop: 0, marginBottom: 10}}>
         {label}
       </SiteText>
       <SiteText as='p' size={1} css={{margin: 0}}>

@@ -12,7 +12,7 @@ const About: NextPage<{}> = () => {
     <Flex col ref={parentRef}>
       <Section>
         <ContentContainer>
-          <SiteText ref={scrollRef} size={3}>
+          <SiteText ref={scrollRef}>
             I&apos;m Mike Grogan, a full stack developer based in the US
           </SiteText>
 
@@ -47,7 +47,7 @@ const About: NextPage<{}> = () => {
       </Section>
       <Section color={1}>
         <ContentContainer>
-          <SiteText size={3}>About me</SiteText>
+          <SiteText>About me</SiteText>
           <SiteText as='p' size={1}>
             I grew up in Connecticut where I earned a degree in Computer Engineering at UCONN. A few
             years later I moved to Denver, Colorado and stayed there for four years. As an avid
@@ -60,7 +60,7 @@ const About: NextPage<{}> = () => {
       </Section>
       <Section color={2}>
         <ContentContainer>
-          <SiteText size={3}>Get in touch!</SiteText>
+          <SiteText>Get in touch!</SiteText>
           <GetInTouch />
         </ContentContainer>
       </Section>

@@ -1,4 +1,12 @@
-import {styled} from '~/stitches.config';
+import {config, styled} from '~/stitches.config';
+
+const themeColors: {
+  [k in keyof typeof config.theme.colors]: {color: string};
+} = Object.entries(config.theme.colors).reduce<any>(
+  (acc, [k, v]) => ((acc[k] = {color: v}), acc),
+  {},
+);
+
 export const SiteText = styled('h1', {
   padding: 0,
   variants: {
@@ -7,9 +15,12 @@ export const SiteText = styled('h1', {
         fontSize: '1em',
       },
       2: {
-        fontSize: '1.4em',
+        fontSize: '1.2em',
       },
       3: {
+        fontSize: '1.4em',
+      },
+      4: {
         fontSize: '2em',
       },
     },
@@ -51,6 +62,16 @@ export const SiteText = styled('h1', {
       dark: {
         color: '#000',
       },
+      ...themeColors,
+    },
+    link: {
+      true: {
+        textDecoration: 'underline',
+        color: 'white',
+        textDecorationColor: '$primary',
+        textUnderlineOffset: '0.3rem',
+        textDecorationThickness: '3px',
+      },
     },
     responsive: {
       mobile: {
@@ -65,7 +86,7 @@ export const SiteText = styled('h1', {
   },
   defaultVariants: {
     color: 'light',
-    size: 3,
+    size: 4,
     weight: 400,
   },
 });

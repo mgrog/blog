@@ -1,7 +1,7 @@
 import {Box} from '@elements';
 import React, {useState} from 'react';
 
-// fuck them bots
+// hide from bots
 const LinkObfuscator = ({href, display}: {href: string; display: string}) => {
   const [obfuscated, setObfuscated] = useState(true);
 
