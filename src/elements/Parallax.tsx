@@ -119,14 +119,12 @@ export const Parallax = styled('div', {
 export const Perspective = styled('div', {
   perspective: 1,
   perspectiveOrigin: 'top left',
+  overflowX: 'hidden',
   overflowY: 'scroll',
   '-webkit-overflow-scrolling': 'touch',
-  overflowX: 'hidden',
   width: '100vw',
-  // backgroundColor: '#7EA6D7',
+  height: '100vh',
   backgroundColor: '#121212',
-  minHeight: '100vh',
-  maxHeight: '100vh',
   backfaceVisibility: 'hidden',
   scrollBehavior: 'smooth',
 });

@@ -1,7 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 import {Flex} from '@elements';
 import Link from 'next/link';
 import React, {useEffect, useRef, useState} from 'react';
-import {Github, LinkedIn, Telegram} from '~/icons';
+import {Github, LinkedIn, Telegram} from '@assets/icons';
 import {styled} from '~/stitches.config';
 
 const NavBar = () => {
@@ -76,12 +77,14 @@ const NavBar = () => {
         <Tip>nav here!</Tip>
       </StyledNavBall>
       <Flex col css={{position: 'absolute', left: 'calc(100% + 10px)', top: -10, gap: 20}}>
-        <IconBtn href='https://www.github.com/mgrog'>{/* <Github height={35} /> */}</IconBtn>
+        <IconBtn href='https://www.github.com/mgrog'>
+          <img src={Github.src} alt='Github Icon' />
+        </IconBtn>
         <IconBtn href='https://t.me/mikegroganchat'>
-          {/* <Telegram height={35} fill='#1b60a5' /> */}
+          <img src={Telegram.src} height={35} alt='Telegram Icon' />
         </IconBtn>
         <IconBtn href='https://www.linkedin.com/in/michael-grogan-2a164666/'>
-          {/* <LinkedIn height={35} fill='#052b4f' /> */}
+          <img src={LinkedIn.src} height={35} alt='LinkedIn Icon' />
         </IconBtn>
       </Flex>
     </Container>

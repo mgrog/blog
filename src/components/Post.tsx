@@ -37,11 +37,7 @@ let Post = ({imgProps, title, subtitle, postId, children, tags, published}: Prop
 };
 
 const Title = ({children}: {children: string}) => (
-  <StyledTitle
-    css={{marginBottom: 0}}
-    nowrap={{'@initial': false, '@bp1': true}}
-    dangerouslySetInnerHTML={{__html: children}}
-  />
+  <StyledTitle css={{marginBottom: 0}} dangerouslySetInnerHTML={{__html: children}} />
 );
 
 const PublishedDate = ({children}: {children: string}) => (
@@ -132,17 +128,13 @@ const StyledPost = styled('div', {
         flexDirection: 'row',
         maxWidth: '100%',
         margin: '60px 0',
-        [`& ${PostChildren}`]: {
-          paddingLeft: 40,
-        },
+        gap: 30,
       },
       reverse: {
         maxWidth: '100%',
         flexDirection: 'row-reverse',
         margin: '60px 0',
-        [`& ${PostChildren}`]: {
-          paddingRight: 40,
-        },
+        gap: 30,
       },
     },
   },

@@ -19,7 +19,7 @@
       "@assets/*": ["./assets/*"],
       "@components": ["./src/components"],
       "@elements": ["./src/elements"],
-      "@icons/*": ["./icons/*"],
+      "@icons/*": ["assets/icons/*"],
       "@pageMarkdown/*": ["./page-markdown/*"],
       "~/*": ["./*"]
     }
