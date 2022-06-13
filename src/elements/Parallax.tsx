@@ -100,7 +100,7 @@ export const Parallax = styled('div', {
         },
         '@bpMax': {
           width: '$$largeDesktopWidth',
-          bottom: '-32vw',
+          bottom: 'min(-700px, -32vw)',
         },
       },
       5: {

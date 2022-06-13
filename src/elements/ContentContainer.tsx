@@ -15,13 +15,14 @@ export const ContentContainer = styled('div', {
         '@bp0': {
           width: '$$width',
           maxWidth: '$$mobileMaxWidth',
-          margin: '0 $$mobileMx',
+          marginX: '$$mobileMx',
           padding: '$$mobilePadding',
         },
         '@bp2': {
           width: '$$width',
           maxWidth: '$$desktopMaxWidth',
-          margin: '0 $$desktopMx',
+          marginLeft: '$$desktopMx',
+          marginRight: 'auto',
           padding: '$$desktopPadding',
         },
       },
