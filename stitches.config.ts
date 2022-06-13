@@ -23,6 +23,7 @@ export const {styled, css, globalCss, keyframes, getCssText, theme, createTheme,
       bp0: '(min-width: 0)',
       bp1: '(min-width: 640px)',
       bp2: '(min-width: 1100px)',
+      bpMax: '(min-width: 1800px)',
     },
     utils: {
       marginX: (value: string | number) => ({

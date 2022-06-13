@@ -76,14 +76,12 @@ const NavBar = () => {
         <Tip>nav here!</Tip>
       </StyledNavBall>
       <Flex col css={{position: 'absolute', left: 'calc(100% + 10px)', top: -10, gap: 20}}>
-        <IconBtn href='https://www.github.com/mgrog'>
-          <Github height={35} />
-        </IconBtn>
+        <IconBtn href='https://www.github.com/mgrog'>{/* <Github height={35} /> */}</IconBtn>
         <IconBtn href='https://t.me/mikegroganchat'>
-          <Telegram height={35} fill='#1b60a5' />
+          {/* <Telegram height={35} fill='#1b60a5' /> */}
         </IconBtn>
         <IconBtn href='https://www.linkedin.com/in/michael-grogan-2a164666/'>
-          <LinkedIn height={35} fill='#052b4f' />
+          {/* <LinkedIn height={35} fill='#052b4f' /> */}
         </IconBtn>
       </Flex>
     </Container>
@@ -94,7 +92,10 @@ export {NavBar};
 
 const Container = styled('div', {
   position: 'absolute',
-  right: 65,
+  right: 50,
+  '@bp2': {
+    right: 65,
+  },
   top: 50,
   zIndex: 999,
 });

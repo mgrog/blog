@@ -6,10 +6,7 @@ import styles from '../styles/Home.module.css';
 
 const Home: NextPage<{}> = () => {
   return (
-    <ContentContainer
-      size={{'@initial': 'mobile', '@bp2': 'desktop'}}
-      className={styles.hometext}
-      css={{paddingBottom: 100}}>
+    <ContentContainer className={styles.hometext} css={{paddingBottom: 100}}>
       <HomeMD />
     </ContentContainer>
   );

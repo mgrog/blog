@@ -1,28 +1,28 @@
 import {styled} from '~/stitches.config';
 
 export const ContentContainer = styled('div', {
+  $$width: '100%',
+  $$mobileMaxWidth: '500px',
+  $$desktopMaxWidth: '1125px',
+  $$mobileMx: 'auto',
+  $$desktopMx: 'clamp(50px, 50% - 562px, 400px)',
+  $$mobilePadding: '0 20px',
+  $$desktopPadding: '0',
+
   variants: {
     size: {
-      mobile: {
-        width: '100%',
-        maxWidth: 500,
-        marginX: 'auto',
-        padding: '0 20px',
-      },
-      desktop: {
-        width: '100%',
-        maxWidth: 1125,
-      },
       defaults: {
         '@bp0': {
-          width: '100%',
-          maxWidth: 500,
-          marginX: 'auto',
-          padding: '0 20px',
+          width: '$$width',
+          maxWidth: '$$mobileMaxWidth',
+          margin: '0 $$mobileMx',
+          padding: '$$mobilePadding',
         },
         '@bp2': {
-          width: '100%',
-          maxWidth: 1125,
+          width: '$$width',
+          maxWidth: '$$desktopMaxWidth',
+          margin: '0 $$desktopMx',
+          padding: '$$desktopPadding',
         },
       },
     },
