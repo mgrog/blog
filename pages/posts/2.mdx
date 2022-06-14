@@ -209,7 +209,14 @@ The only way to avoid this is to push all that extra height into the beyond a.k.
 So if you've been following along, after a lot of fiddling hopefully you'll have something like this:
 
 <figure style={{width: '50%'}}>
-  <Image width={300} height={600} quality={95} src={Recording} alt='gif of banner moving' />
+  <Image
+    unoptimized={true}
+    width={300}
+    height={600}
+    quality={95}
+    src={Recording}
+    alt='gif of banner moving'
+  />
   Hey, pretty neat.
 </figure>
 
