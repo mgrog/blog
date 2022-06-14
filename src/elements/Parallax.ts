@@ -1,6 +1,6 @@
 import {styled} from '~/stitches.config';
 
-export const Parallax = styled('div', {
+const Item = styled('div', {
   position: 'absolute',
   left: -1,
   overflowX: 'visible',
@@ -116,7 +116,7 @@ export const Parallax = styled('div', {
   },
 });
 
-export const Perspective = styled('div', {
+const Perspective = styled('div', {
   perspective: 1,
   perspectiveOrigin: 'top left',
   overflowX: 'hidden',
@@ -129,7 +129,7 @@ export const Perspective = styled('div', {
   scrollBehavior: 'smooth',
 });
 
-export const Preserve = styled('div', {
+const Preserve = styled('div', {
   transformStyle: 'preserve-3d',
   height: 500,
   '@bpMax': {
@@ -138,3 +138,11 @@ export const Preserve = styled('div', {
   width: '100vw',
   overflowX: 'visible',
 });
+
+const Parallax = Object.assign({
+  Item,
+  Perspective,
+  Preserve,
+});
+
+export {Parallax};

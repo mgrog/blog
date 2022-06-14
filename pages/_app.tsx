@@ -1,5 +1,5 @@
 import {Banner, NavBar} from '@components';
-import {Box, ContentContainer, Flex, Perspective, SiteText} from '@elements';
+import {Box, ContentContainer, Flex, Parallax, SiteText} from '@elements';
 import type {AppProps} from 'next/app';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
@@ -11,7 +11,7 @@ function MyApp({Component, pageProps}: AppProps) {
 
   return (
     <Layout>
-      <Perspective>
+      <Parallax.Perspective>
         <Box
           css={{
             position: 'absolute',
@@ -48,7 +48,7 @@ function MyApp({Component, pageProps}: AppProps) {
         <Content markdown={matchPost}>
           <Component {...pageProps} />
         </Content>
-      </Perspective>
+      </Parallax.Perspective>
     </Layout>
   );
 }
