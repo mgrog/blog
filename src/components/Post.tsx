@@ -74,15 +74,17 @@ export {Post};
 
 const PostChildren = styled(Flex, {
   width: '100%',
-  overflow: 'hidden',
   paddingBottom: 10,
+  '& a': {
+    width: 'fit-content',
+  },
   variants: {
     layout: {
       'w-min': {
         minWidth: 430,
       },
       'h-fixed': {
-        height: 292,
+        height: 310,
       },
       normal: {
         minWidth: 0,
