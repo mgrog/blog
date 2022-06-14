@@ -33,10 +33,12 @@ CSS has a secret weapon: the GPU. The browser can tap into it's awesome power wh
 
 ### Study Materials
 
-The primer on CSS parallax can be found in the blog post [Performant Parallaxing](https://developer.chrome.com/blog/performant-parallaxing/)
+The primer on CSS parallax can be found in the blog post: [Performant Parallaxing](https://developer.chrome.com/blog/performant-parallaxing/),
 written by a couple of Google Chrome engineers. There are many golden nuggets of information is this post that I will touch on later. But I would
-recommend reading it and point out one thing that was not true in my experience, namely, that mobile Safari would flatten parallax unless you add `position: sticky` ;
-in addition to reversing the effect (yikes). Thankfully, this did not happen on my mobile ios device.
+recommend reading it and point out one thing that was not true in my experience, namely, that mobile Safari would not work unless you add `position: sticky`
+which then reverses the effect (yikes).
+
+Thankfully, this did not happen on my mobile ios device.
 
 ### You expect me to read that?
 
@@ -180,7 +182,9 @@ Ok, so now we've hit our first gotcha.
 Did you notice the `transformOrigin` in the [parallax base style?](#parallax-styles)
 It's set to `left bottom`. This means we are scaling the image from the bottom up. Therefore, it's simpler in my mind to use
 the bottom as the reference point for moving the layers around. If you're thinking "what is this, opposite day?" know that it
-wasn't my first choice. In fact, some browsers [don't take into account perspective](https://developer.chrome.com/blog/performant-parallaxing/#assorted-bugs-and-workarounds)
+wasn't my first choice.
+
+In fact, some browsers [don't take into account perspective](https://developer.chrome.com/blog/performant-parallaxing/#assorted-bugs-and-workarounds)
 for sizing your elements. So when we apply a scale(2) to counteract the translateZ distance,
 the browser acts like the element is _actually_ 2x bigger even if it looks the same as before.
 So it will probably push down into your page content if you were working from the top.
