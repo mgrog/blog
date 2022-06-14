@@ -42,7 +42,7 @@ a {
   text-decoration-thickness: 3px;
 }
 
-a:hover:not(.banner) {
+a:hover:not(.banner, .autolink-header) {
   color: var(--primary);
 }
 
@@ -56,4 +56,58 @@ a.banner {
 
 figure {
   margin: 0;
+}
+
+code {
+  background-color: #1e293b;
+  border: solid #64748b 1px;
+  padding: 3px;
+  border-radius: 2px;
+  font-size: 0.9em;
+}
+
+pre code {
+  border: none;
+}
+
+.autolink-header {
+  height: 25px;
+  text-decoration: none;
+}
+
+.autolink-svg {
+  display: inline;
+  visibility: hidden;
+  color: rgb(64 71 86);
+  margin-left: 5px;
+  margin-bottom: -3px;
+}
+
+h3:hover .autolink-svg {
+  visibility: visible;
+}
+
+.sr-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: auto;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+
+.blog-post {
+  min-height: 500px;
+}
+
+.blog-post figure {
+  font-size: 0.8em;
+}
+
+.blog-post h3 {
+  margin-top: 4rem;
+  margin-bottom: 2rem;
 }

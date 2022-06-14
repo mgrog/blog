@@ -86,7 +86,14 @@ function Content({markdown, children}: ContentProps) {
           fontSize: 18,
         },
       }}>
-      {markdown ? <ContentContainer css={{minHeight: 500}}>{children}</ContentContainer> : children}
+      {markdown ? (
+        <ContentContainer className='blog-post'>
+          <Link href='/posts'>&larr; All Posts</Link>
+          {children}
+        </ContentContainer>
+      ) : (
+        children
+      )}
     </Flex>
   );
 }

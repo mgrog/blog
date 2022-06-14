@@ -1,0 +1,247 @@
+export const meta = {
+  title: 'Howto: Make Your Banner Parallax',
+  subtitle: 'Why would you go and do a thing like that?',
+  snippet: 'Pick a snippet that looks good',
+  tags: ['parallax', 'css', 'frontend'],
+  published: '7/12/2022',
+};
+
+import 'prism-themes/themes/prism-coldark-dark.css';
+import Image from 'next/image';
+import MangledBottom from '@assets/post-content/post-2/mangled-bottom.png';
+import Recording from '@assets/post-content/post-2/recording.gif';
+import Artifacts from '@assets/post-content/post-2/artifacts.png';
+
+# Howto: Make This Website Banner
+
+A while back I had an idea for a blog that was mostly a banner with cool parallax and some markdown thrown in.
+So when I learned that most parallax in the wild was still janky javascript animations,
+and that css parallax, while supported in most browsers, was anything but standardized with various gotchas and inconsistencies,
+you might be inclined to think that I dismissed the idea, being the reasonable and pragmatic engineer that I surely am.
+
+Not I, dear reader. I am stubborn enough to plow through such annoyances. Come bugs, wonky browser support, hell or high water, there would be a
+performant parallax banner on my website, _damnit_. If you are of the same mindset, I can tell you it won't be easy, but it is **possible**.
+
+### Why would you go and do a thing like that?
+
+First off, we should touch on why you should care about any of this to begin with. A javascript solution would work on a variety of browsers without
+many differences and would seem easier to implement. And that would be right, **_if_** we were going for the janky slideshow asthetic.
+The poor javascript thread running on your browser would try it's best to keep up but left in the dust when you flick the screen away on your mobile device.
+
+CSS has a secret weapon: the GPU. The browser can tap into it's awesome power when we keep everything in CSS, and with few exceptions
+(the excellent [React Spring](https://react-spring.io/) comes to mind), this is the only way to get smooth effects. And smooth effects should be our goal.
+
+### Study Materials
+
+The primer on CSS parallax can be found in the blog post [Performant Parallaxing](https://developer.chrome.com/blog/performant-parallaxing/)
+written by a couple of Google Chrome engineers. There are many golden nuggets of information is this post that I will touch on later. But I would
+recommend reading it and point out one thing that was not true in my experience, namely, that mobile Safari would flatten parallax unless you add `position: sticky` ;
+in addition to reversing the effect (yikes). Thankfully, this did not happen on my mobile ios device.
+
+### You expect me to read that?
+
+Ok fine, let me sum up the basics for you. To make this work:
+
+- The scroll body needs `overflow: scroll`, `perspective: [some amount]`, and `perspective-origin: top left`.
+  In this case we are using 1px as the reference distance
+
+- The child elements need to be wrapped in a container with `transform-style: preserve3d` (for firefox to work)
+
+- The parallaxing elements must have `translate-z: [some amount]` in proportion to it's distance in the background
+
+Let's look at some example code:
+
+```javascript
+export const Perspective = styled('div', {
+  perspective: 1,
+  perspectiveOrigin: 'top left',
+  overflowX: 'hidden',
+  overflowY: 'scroll',
+  '-webkit-overflow-scrolling': 'touch',
+  width: '100vw',
+  height: '100vh',
+  backgroundColor: '#121212',
+  backfaceVisibility: 'hidden',
+  scrollBehavior: 'smooth',
+});
+```
+
+<br />
+
+```javascript
+export const Preserve = styled('div', {
+  transformStyle: 'preserve-3d',
+  height: 500,
+  width: '100vw',
+  overflowX: 'visible',
+});
+```
+
+<figure>
+  I'm using the excellent [stitches](https://stitches.dev/) library for my flavor of css-in-js
+</figure>
+
+### Wait, what's 'backfaceVisibility'?
+
+Don't worry, we'll get to that.
+
+Now here comes the fiddly part:
+
+You must position each parallaxing element in the container correctly. For example:
+
+```javascript
+function Banner() {
+  return (
+    <Preserve aria-label='illustration of layers of mountains in the distance, trees are in the foreground, the perspective shifts as you move down the page'>
+      <Parallax layer={0} id='top'>
+        <img src={Ridge0.src} alt='layer-0' />
+      </Parallax>
+      <Parallax layer={1}>
+        <img src={Treeline.src} alt='layer-1' />
+      </Parallax>
+      <Parallax layer={2}>
+        <img src={Ridge1.src} alt='layer-2' />
+      </Parallax>
+      <Parallax layer={3}>
+        <img src={Ridge2.src} alt='layer-3' />
+      </Parallax>
+      <Parallax layer={4}>
+        <img src={Ridge3.src} alt='layer-4' />
+      </Parallax>
+      <Parallax layer={5}>
+        <Box css={{backgroundColor: '$sky', height: 1200, overflow: 'hidden'}} />
+      </Parallax>
+    </Preserve>
+```
+
+<br />
+
+In the above we have 5 layers, 4 svgs and one background Box (div). In each `<Parallax>` we have these styles:
+
+<br />
+
+<div id='parallax-styles' />
+```javascript
+  export const Parallax = styled('div', {
+    position: 'absolute',
+    overflowX: 'visible',
+    transformOrigin: 'left bottom',
+  }
+```
+
+<br />
+
+And each layer places itself where it needs to be to construct the image i.e.
+
+<br />
+
+```javascript
+    {
+      transform: 'translateZ(0px)',
+      minWidth: 1500,
+      bottom: -200,
+    },
+```
+
+<figure>layer 0 (in front)</figure>
+
+<br />
+
+```javascript
+    {
+      transform: 'translateZ(-0.4px) scale(1.4)',
+      width: '100vw',
+      bottom: -200,
+    },
+```
+
+<figure>layer 1 (middle)</figure>
+
+```javascript
+    {
+      transform: 'translateZ(-0.7px) scale(1.7)',
+      width: '100vw',
+      bottom: -218,
+    },
+```
+
+<figure>layer 2 (in back)</figure>
+
+<br />
+
+Notice how the scale moves up in relation to the `translateZ` ?
+It's so we can move the element back in the "frame" without affecting the size of the specific layer.
+Things look smaller when they are far away right? The css is modelling that too, but in this case, we don't want it.
+But of course you read this already in the [study material](https://developer.chrome.com/blog/performant-parallaxing/#adjusting-scale-for-perspective).
+
+### Why are you using `bottom` everywhere?
+
+Ok, so now we've hit our first gotcha.
+Did you notice the `transformOrigin` in the [parallax base style?](#parallax-styles)
+It's set to `left bottom`. This means we are scaling the image from the bottom up. Therefore, it's simpler in my mind to use
+the bottom as the reference point for moving the layers around. If you're thinking "what is this, opposite day?" know that it
+wasn't my first choice. In fact, some browsers [don't take into account perspective](https://developer.chrome.com/blog/performant-parallaxing/#assorted-bugs-and-workarounds)
+for sizing your elements. So when we apply a scale(2) to counteract the translateZ distance,
+the browser acts like the element is _actually_ 2x bigger even if it looks the same as before.
+So it will probably push down into your page content if you were working from the top.
+The only way to avoid this is to push all that extra height into the beyond a.k.a. the top of your browser window.
+
+<figure>
+  <Image
+    placeholder='blur'
+    width={290}
+    height={80}
+    quality={10}
+    layout='responsive'
+    src={MangledBottom}
+    alt='picture of elements bleeding through bottom of website'
+  />
+  If you try to use `top left` you might get something like this at the bottom of your page. Yeah not
+  great.
+</figure>
+
+### Final Product
+
+So if you've been following along, after a lot of fiddling hopefully you'll have something like this:
+
+<figure style={{width: '50%'}}>
+  <Image width={300} height={600} quality={95} src={Recording} alt='gif of banner moving' />
+  Hey, pretty neat.
+</figure>
+
+### Except...Gotcha #2
+
+This is how it looks on Chrome:
+
+<figure>
+  <Image
+    placeholder='blur'
+    width={264}
+    height={159}
+    quality={75}
+    layout='responsive'
+    src={Artifacts}
+    alt='picure of some graphical artifacts'
+  />
+  Are you f##king kidding me, Chrome?
+</figure>
+
+### Fixing it
+
+What worked for me was to fiddle with both the `translateZ` properties as well the positioning.
+Just setting `left: -1px` worked to fix a lot of the issues I was having in Chrome. Just messed with it, move things slightly back, up/down.
+Eventually some configuration works.
+
+Why? You're guess is as good as mine. I read there may be some antialiasing in the background layers causing some layers to not render(?)
+I really don't know, the `backfaceVisibility: hidden` was supposed to help with skipping any processing on those obscured layers
+but it didn't get rid of all my issues. Just one of those things I guess, maybe I'll file a bug.
+
+### One more Gotcha before you go
+
+It seems scroll performance on Firefox is noticeably worse than the other big players. You can mitigate this by being judicious
+in the size of your images. Huge images will tank your scroll performance, it's most noticeable however on FF.
+
+### And we're done!
+
+Boy that was a journey! Well done if you've read this far. Hopefully you learned something, or built something cool,
+or maybe you just had fun reading and that's cool too. Bye!
