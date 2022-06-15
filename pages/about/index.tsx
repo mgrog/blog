@@ -2,11 +2,15 @@ import beachPic from '@assets/me-beach-2.jpg';
 import {ContentContainer, Flex, Section, SiteText} from '@elements';
 import GetInTouch from '@pageMarkdown/GetInTouch.mdx';
 import {NextPage} from 'next';
+import Head from 'next/head';
 import Image from 'next/image';
 
 const About: NextPage<{}> = () => {
   return (
     <Flex col>
+      <Head>
+        <title>About Page</title>
+      </Head>
       <Section>
         <ContentContainer>
           <SiteText>I&apos;m Mike Grogan, a full stack developer based in the US</SiteText>

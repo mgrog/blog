@@ -78,13 +78,13 @@ const NavBar = () => {
       </StyledNavBall>
       <Flex col css={{position: 'absolute', left: 'calc(100% + 10px)', top: -10, gap: 20}}>
         <IconBtn href='https://www.github.com/mgrog'>
-          <img src={Github.src} alt='Github Icon' />
+          <img src={Github.src} height={35} width={35} alt='Github Icon' />
         </IconBtn>
         <IconBtn href='https://t.me/mikegroganchat'>
-          <img src={Telegram.src} height={35} alt='Telegram Icon' />
+          <img src={Telegram.src} height={35} width={35} alt='Telegram Icon' />
         </IconBtn>
         <IconBtn href='https://www.linkedin.com/in/michael-grogan-2a164666/'>
-          <img src={LinkedIn.src} height={35} alt='LinkedIn Icon' />
+          <img src={LinkedIn.src} height={35} width={35} alt='LinkedIn Icon' />
         </IconBtn>
       </Flex>
     </Container>

@@ -1,12 +1,15 @@
-import {Flex, SiteText, Section, Box} from '@elements';
+import {Box, ContentContainer, Flex, Section, SiteText} from '@elements';
 import {NextPage} from 'next';
-import React, {ReactNode} from 'react';
-import {ContentContainer} from '@elements';
+import Head from 'next/head';
+import {ReactNode} from 'react';
 import {styled} from '~/stitches.config';
 
 const CV: NextPage<{}> = () => {
   return (
     <Flex col>
+      <Head>
+        <title>Resume Page</title>
+      </Head>
       <Section>
         <ContentContainer>
           <SiteText as='h1'>CV/Resume</SiteText>

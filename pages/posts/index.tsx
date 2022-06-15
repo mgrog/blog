@@ -3,11 +3,15 @@ import {ContentContainer, SiteText} from '@elements';
 import {compareDesc, parse} from 'date-fns';
 import fs from 'fs';
 import type {GetStaticProps, NextPage} from 'next';
+import Head from 'next/head';
 import {getPlaiceholder} from 'plaiceholder';
 
 const Posts: NextPage<{metadata: MetaData[]}> = ({metadata}: {metadata: MetaData[]}) => {
   return (
     <ContentContainer css={{paddingBottom: 50}}>
+      <Head>
+        <title>Blog Posts</title>
+      </Head>
       <SiteText pad={1}>Posts</SiteText>
       {metadata.map((meta) => (
         <Post

@@ -4,6 +4,7 @@ import type {AppProps} from 'next/app';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
 import '../styles/globals.css';
+import {styled} from '~/stitches.config';
 
 function MyApp({Component, pageProps}: AppProps) {
   const router = useRouter();
@@ -68,24 +69,7 @@ type ContentProps = {
 
 function Content({markdown, children}: ContentProps) {
   return (
-    <Flex
-      css={{
-        justifyContent: 'center',
-        height: 'auto',
-        width: '100%',
-        backgroundColor: '$dark-neutral',
-        zIndex: 10,
-        position: 'absolute',
-        overflow: 'hidden',
-        paddingBottom: 50,
-        '-webkit-transform': 'translateZ(0px)',
-        '@bp0': {
-          fontSize: 14,
-        },
-        '@bp2': {
-          fontSize: 18,
-        },
-      }}>
+    <Wrapper centered='horizontal'>
       {markdown ? (
         <ContentContainer className='blog-post'>
           <Link href='/posts'>&larr; All Posts</Link>
@@ -94,8 +78,25 @@ function Content({markdown, children}: ContentProps) {
       ) : (
         children
       )}
-    </Flex>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled(Flex, {
+  height: 'auto',
+  width: '100%',
+  backgroundColor: '$dark-neutral',
+  zIndex: 10,
+  position: 'absolute',
+  overflow: 'hidden',
+  paddingBottom: 50,
+  '-webkit-transform': 'translateZ(0px)',
+  '@bp0': {
+    fontSize: 14,
+  },
+  '@bp2': {
+    fontSize: 18,
+  },
+});
 
 export default MyApp;
