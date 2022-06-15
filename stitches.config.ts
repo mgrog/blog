@@ -4,12 +4,11 @@ export const {styled, css, globalCss, keyframes, getCssText, theme, createTheme,
   createStitches({
     theme: {
       colors: {
-        gray400: 'gainsboro',
-        gray500: 'lightgray',
         'dark-neutral': 'var(--dark-neutral)',
         primary: 'var(--primary)',
         'dark-primary': 'var(--dark-primary)',
         'darker-primary': 'var(--darker-primary)',
+        'light-primary': '#2c77bf',
         sky: 'var(--sky-color)',
       },
       transitions: {

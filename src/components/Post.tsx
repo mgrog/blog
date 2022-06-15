@@ -30,7 +30,7 @@ let Post = ({imgProps, title, subtitle, postId, children, tags, published}: Prop
         <PublishedDate>{published}</PublishedDate>
         <SubTitle>{subtitle}</SubTitle>
         <Content>{children}</Content>
-        <Link href={`/posts/${postId}#top`}>Read Post &rarr;</Link>
+        <Link href={`/posts/${postId}#content`}>Read Post &rarr;</Link>
       </PostChildren>
     </StyledPost>
   );

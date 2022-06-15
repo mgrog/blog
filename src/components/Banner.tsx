@@ -5,7 +5,7 @@ import {Box, Parallax} from '@elements';
 function Banner() {
   return (
     <Parallax.Preserve aria-label='illustration of layers of mountains in the distance, trees are in the foreground, the perspective shifts as you move down the page'>
-      <Parallax.Item layer={0} id='top'>
+      <Parallax.Item layer={0} id='content'>
         <img src={Ridge0.src} alt='layer-0' />
       </Parallax.Item>
       <Parallax.Item layer={1}>

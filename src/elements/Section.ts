@@ -12,10 +12,13 @@ export const Section = styled('section', {
         backgroundColor: '$dark-neutral',
       },
       1: {
-        backgroundColor: '$darker-primary',
+        backgroundColor: '#18181B',
       },
       2: {
         backgroundColor: '$dark-primary',
+      },
+      3: {
+        backgroundColor: '$darker-primary',
       },
     },
   },

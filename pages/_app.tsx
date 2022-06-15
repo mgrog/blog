@@ -1,10 +1,11 @@
-import {Banner, NavBar} from '@components';
+import {Banner, NavBar, Footer} from '@components';
 import {Box, ContentContainer, Flex, Parallax, SiteText} from '@elements';
 import type {AppProps} from 'next/app';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
 import '../styles/globals.css';
 import {styled} from '~/stitches.config';
+import {useEffect} from 'react';
 
 function MyApp({Component, pageProps}: AppProps) {
   const router = useRouter();
@@ -13,6 +14,7 @@ function MyApp({Component, pageProps}: AppProps) {
   return (
     <Layout>
       <Parallax.Perspective>
+        <Box id='root' css={{visibility: 'hidden'}} />
         <Box
           css={{
             position: 'absolute',
@@ -69,14 +71,20 @@ type ContentProps = {
 
 function Content({markdown, children}: ContentProps) {
   return (
-    <Wrapper centered='horizontal'>
+    <Wrapper col centered='horizontal'>
       {markdown ? (
-        <ContentContainer className='blog-post'>
-          <Link href='/posts'>&larr; All Posts</Link>
-          {children}
-        </ContentContainer>
+        <>
+          <ContentContainer className='blog-post'>
+            <Link href='/posts'>&larr; All Posts</Link>
+            {children}
+          </ContentContainer>
+          <Footer />
+        </>
       ) : (
-        children
+        <>
+          {children}
+          <Footer />
+        </>
       )}
     </Wrapper>
   );
@@ -89,7 +97,6 @@ const Wrapper = styled(Flex, {
   zIndex: 10,
   position: 'absolute',
   overflow: 'hidden',
-  paddingBottom: 50,
   '-webkit-transform': 'translateZ(0px)',
   '@bp0': {
     fontSize: 14,
