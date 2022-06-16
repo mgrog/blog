@@ -15,9 +15,9 @@ import Artifacts from '@assets/post-content/post-2/artifacts.png';
 # Howto: Make This Website Banner
 
 A while back I had an idea for a blog that was mostly a banner with cool parallax and some markdown thrown in.
-So when I learned that most parallax in the wild was still janky javascript animations,
-and that css parallax, while supported in most browsers, was anything but standardized with various gotchas and inconsistencies,
-you might be inclined to think that I dismissed the idea, being the reasonable and pragmatic engineer that I surely am.
+So on learning that most parallax in the wild was still janky javascript animations,
+and that css parallax, while supported in most browsers, was anything but standardized with various gotchas and inconsistencies.
+You might be inclined to think that I dismissed the idea, being the reasonable and pragmatic engineer that I surely am.
 
 Not I, dear reader. I am stubborn enough to plow through such annoyances. Come bugs, wonky browser support, hell or high water, there would be a
 performant parallax banner on my website, _damnit_. If you are of the same mindset, I can tell you it won't be easy, but it is **possible**.
@@ -34,8 +34,8 @@ CSS has a secret weapon: the GPU. The browser can tap into it's awesome power wh
 ### Study Materials
 
 The primer on CSS parallax can be found in the blog post: [Performant Parallaxing](https://developer.chrome.com/blog/performant-parallaxing/),
-written by a couple of Google Chrome engineers. There are many golden nuggets of information is this post that I will touch on later. But I would
-recommend reading it and point out one thing that was not true in my experience, namely, that mobile Safari would not work unless you add `position: sticky`
+written by a couple of Google Chrome engineers. There are many golden nuggets of information in this post that I will touch on later. But I would
+recommend reading it while pointing out one thing in the post that was not true in my experience; namely, that mobile Safari would not work unless you add `position: sticky`
 which then reverses the effect (yikes).
 
 Thankfully, this did not happen on my mobile ios device.
@@ -49,7 +49,7 @@ Ok fine, let me sum up the basics for you. To make this work:
 
 - The child elements need to be wrapped in a container with `transform-style: preserve3d` (for firefox to work)
 
-- The parallaxing elements must have `translate-z: [some amount]` in proportion to it's distance in the background
+- The parallaxing elements must have `translate-z: [some amount]` in proportion to it's distance in the background i.e. if you start at 0px, elements with negative numbers are behind it and further away.
 
 Let's look at some example code:
 
@@ -124,7 +124,7 @@ In the above we have 5 layers, 4 svgs and one background Box (div). In each `<Pa
 
 <div id='parallax-styles' />
 ```javascript
-  export const Parallax = styled('div', {
+  const Item = styled('div', {
     position: 'absolute',
     overflowX: 'visible',
     transformOrigin: 'left bottom',
