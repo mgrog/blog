@@ -2,7 +2,7 @@ import {Flex, SiteText} from '@elements';
 import {format, parse} from 'date-fns';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, {ReactNode} from 'react';
+import {ReactNode} from 'react';
 import {styled} from '~/stitches.config';
 
 type Props = {

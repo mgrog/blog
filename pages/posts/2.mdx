@@ -1,7 +1,7 @@
 export const meta = {
   title: 'Howto: Make Your Banner Parallax With CSS',
   subtitle: 'Why would you go and do a thing like that?',
-  snippet: 'Javascript would work, IF we were going for the janky slideshow aesthetic.',
+  snippet: 'Javascript would work, IF we were going for the janky slideshow aesthetic...',
   tags: ['parallax', 'css', 'frontend'],
   published: '6/12/2022',
 };
@@ -94,31 +94,31 @@ You must position each parallaxing element in the container correctly. For examp
 ```javascript
 function Banner() {
   return (
-    <Preserve aria-label='illustration of layers of mountains in the distance, trees are in the foreground, the perspective shifts as you move down the page'>
-      <Parallax layer={0} id='top'>
+    <Parallax.Preserve aria-label='illustration of layers of mountains in the distance, trees are in the foreground, the perspective shifts as you move down the page'>
+      <Parallax.Item layer={0} id='content'>
         <img src={Ridge0.src} alt='layer-0' />
-      </Parallax>
-      <Parallax layer={1}>
+      </Parallax.Item>
+      <Parallax.Item layer={1}>
         <img src={Treeline.src} alt='layer-1' />
-      </Parallax>
-      <Parallax layer={2}>
+      </Parallax.Item>
+      <Parallax.Item layer={2}>
         <img src={Ridge1.src} alt='layer-2' />
-      </Parallax>
-      <Parallax layer={3}>
+      </Parallax.Item>
+      <Parallax.Item layer={3}>
         <img src={Ridge2.src} alt='layer-3' />
-      </Parallax>
-      <Parallax layer={4}>
+      </Parallax.Item>
+      <Parallax.Item layer={4}>
         <img src={Ridge3.src} alt='layer-4' />
-      </Parallax>
-      <Parallax layer={5}>
+      </Parallax.Item>
+      <Parallax.Item layer={5}>
         <Box css={{backgroundColor: '$sky', height: 1200, overflow: 'hidden'}} />
-      </Parallax>
-    </Preserve>
+      </Parallax.Item>
+    </Parallax.Preserve>
 ```
 
 <br />
 
-In the above we have 5 layers, 4 svgs and one background Box (div). In each `<Parallax>` we have these styles:
+In the above we have 5 layers, 4 svgs and one background Box (div). In each `<Parallax.Item>` we have these styles:
 
 <br />
 
