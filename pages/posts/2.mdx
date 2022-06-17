@@ -173,7 +173,7 @@ And each layer places itself where it needs to be to construct the image i.e.
 
 Notice how the scale moves up in relation to the `translateZ` ?
 It's so we can move the element back in the "frame" without affecting the size of the specific layer.
-Things look smaller when they are far away right? The css is modelling that too, but in this case, we don't want it.
+Things look smaller when they are far away, right? The css is modelling that too, but in this case, we don't want it.
 But of course you read this already in the [study material](https://developer.chrome.com/blog/performant-parallaxing/#adjusting-scale-for-perspective).
 
 ### Why are you using `bottom` everywhere?
@@ -185,7 +185,7 @@ the bottom as the reference point for moving the layers around. If you're thinki
 wasn't my first choice.
 
 In fact, some browsers [don't take into account perspective](https://developer.chrome.com/blog/performant-parallaxing/#assorted-bugs-and-workarounds)
-for sizing your elements. So when we apply a scale(2) to counteract the translateZ distance,
+for sizing your elements. So when we apply a scale(2) to counteract a translateZ distance that twice as far away as the base,
 the browser acts like the element is _actually_ 2x bigger even if it looks the same as before.
 So it will probably push down into your page content if you were working from the top.
 The only way to avoid this is to push all that extra height into the beyond a.k.a. the top of your browser window.
@@ -250,7 +250,7 @@ but it didn't get rid of all my issues. Just one of those things I guess, maybe 
 ### One more Gotcha before you go
 
 It seems scroll performance on Firefox is noticeably worse than the other big players. You can mitigate this by being judicious
-in the size of your images. Huge images will tank your scroll performance, it's most noticeable however on FF.
+in the size of your images. Huge images will hurt your scroll performance regardless, but it's most noticeable on FF.
 
 ### And we're done!
 
