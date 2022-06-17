@@ -29,5 +29,13 @@ export const {styled, css, globalCss, keyframes, getCssText, theme, createTheme,
         marginLeft: value,
         marginRight: value,
       }),
+      padX: (value: string | number) => ({
+        paddingLeft: value,
+        paddingRight: value,
+      }),
+      padY: (value: string | number) => ({
+        paddingTop: value,
+        paddingBottom: value,
+      }),
     },
   });

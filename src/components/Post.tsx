@@ -3,6 +3,7 @@ import {format, parse} from 'date-fns';
 import Image from 'next/image';
 import Link from 'next/link';
 import {ReactNode} from 'react';
+import {ImgProps, MetaData} from '~/pages/posts';
 import {styled} from '~/stitches.config';
 
 type Props = {

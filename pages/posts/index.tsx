@@ -6,6 +6,24 @@ import type {GetStaticProps, NextPage} from 'next';
 import Head from 'next/head';
 import {getPlaiceholder} from 'plaiceholder';
 
+export type ImgProps = {
+  blurDataURL: string;
+  src: string;
+  height?: number;
+  width?: number;
+  type?: string | undefined;
+};
+
+export type MetaData = {
+  postId: string;
+  title: string;
+  subtitle: string;
+  content: string;
+  tags: string[];
+  published: string;
+  imgProps: ImgProps;
+};
+
 const Posts: NextPage<{metadata: MetaData[]}> = ({metadata}: {metadata: MetaData[]}) => {
   return (
     <ContentContainer css={{paddingBottom: 50}}>
@@ -48,7 +66,7 @@ export const getStaticProps: GetStaticProps = async () => {
         tags: meta?.tags || null,
         published: meta?.published || null,
         imgProps: {
-          ...img,
+          src: img.src,
           blurDataURL: base64,
         },
       };

@@ -2,7 +2,7 @@ import {styled} from '@stitches/react';
 
 export const Section = styled('section', {
   width: '100vw',
-  padding: '40px 0',
+  padY: 40,
   '& h1': {
     marginTop: 0,
   },

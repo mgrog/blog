@@ -32,9 +32,9 @@ const Footer = () => (
 );
 
 const StyledSection = styled(Section, {
-  paddingBottom: 50,
+  paddingBottom: 100,
   zIndex: 11,
-  margin: '0 -20px',
+  marginX: -20,
   width: '100vw',
 });
 
