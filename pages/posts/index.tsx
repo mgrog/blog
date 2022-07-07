@@ -1,10 +1,10 @@
-import {Post} from '@components';
-import {ContentContainer, SiteText} from '@elements';
-import {compareDesc, parse} from 'date-fns';
+import { Post, Text } from '@components';
+import { ContentContainer } from '@layout';
+import { compareDesc, parse } from 'date-fns';
 import fs from 'fs';
-import type {GetStaticProps, NextPage} from 'next';
+import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
-import {getPlaiceholder} from 'plaiceholder';
+import { getPlaiceholder } from 'plaiceholder';
 
 export type ImgProps = {
   blurDataURL: string;
@@ -24,13 +24,13 @@ export type MetaData = {
   imgProps: ImgProps;
 };
 
-const Posts: NextPage<{metadata: MetaData[]}> = ({metadata}: {metadata: MetaData[]}) => {
+const Posts: NextPage<{ metadata: MetaData[] }> = ({ metadata }: { metadata: MetaData[] }) => {
   return (
-    <ContentContainer css={{paddingBottom: 50}}>
+    <ContentContainer paddingBottom='12'>
       <Head>
-        <title>Blog Posts</title>
+        <Text as='title'>Blog Posts</Text>
       </Head>
-      <SiteText pad={1}>Posts</SiteText>
+      <Text paddingY='3'>Posts</Text>
       {metadata.map((meta) => (
         <Post
           key={meta.postId}
@@ -52,11 +52,11 @@ export const getStaticProps: GetStaticProps = async () => {
 
   for (let file of fs.readdirSync('./pages/posts')) {
     if (file.endsWith('.mdx')) {
-      let {meta} = await import(`./${file}`);
+      let { meta } = await import(`./${file}`);
 
       let [postNum] = file.split('.');
 
-      const {base64, img} = await getPlaiceholder(`/post-images/${postNum}.jpeg`, {size: 10});
+      const { base64, img } = await getPlaiceholder(`/post-images/${postNum}.jpeg`, { size: 10 });
 
       let map = {
         postId: postNum,
@@ -82,7 +82,7 @@ export const getStaticProps: GetStaticProps = async () => {
   );
 
   return {
-    props: {metadata},
+    props: { metadata },
   };
 };
 

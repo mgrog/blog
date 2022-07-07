@@ -1,5 +1,4 @@
-import {getCssText} from '~/stitches.config';
-import Document, {Html, Head, Main, NextScript} from 'next/document';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 class MyDocument extends Document {
   render() {
@@ -16,7 +15,6 @@ class MyDocument extends Document {
             href='https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700;800;900&family=Indie+Flower&family=Montserrat&display=swap'
             rel='stylesheet'
           />
-          <style id='stitches' dangerouslySetInnerHTML={{__html: getCssText()}} />
         </Head>
         <body>
           <Main />

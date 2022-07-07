@@ -1,8 +1,8 @@
-import {Box, ContentContainer, Flex, Section, SiteText} from '@elements';
-import {NextPage} from 'next';
+import { Box, Button, Flex, Text } from '@components';
+import { ContentContainer, Section } from '@layout';
+import { NextPage } from 'next';
 import Head from 'next/head';
-import {ReactNode} from 'react';
-import {styled} from '~/stitches.config';
+import { ReactNode } from 'react';
 
 const CV: NextPage<{}> = () => {
   return (
@@ -12,27 +12,27 @@ const CV: NextPage<{}> = () => {
       </Head>
       <Section>
         <ContentContainer>
-          <SiteText as='h1'>CV/Resume</SiteText>
-          <SiteText as='p' size={1}>
+          <Section.Heading paddingBottom='12'>CV/Resume</Section.Heading>
+          <Text as='p' fontSize={1}>
             Michael Grogan is a senior fullstack developer with an emphasis on frontend
             technologies. His industry experience spans 7 years and includes react, react-native,
             angular, node, elixir, graphQL, and docker technologies. He has led small teams and
             mentored junior devs, as well as been involved in high-level decision-making in his
             various roles.
-          </SiteText>
-          <SiteText as='p' size={1}>
+          </Text>
+          <Text as='p' fontSize={1}>
             Michael is a strong communicator for both business and technological needs, and takes
             pride in writing concise, testable, and semantic code, as well as aesthetic and
             intuitive UIs. He has received a grant for and subsequently shipped software for a top
             100 crypto project, and is currently working on a React Native app and Elixir API for
             web3 platforms during his time between roles.
-          </SiteText>
+          </Text>
         </ContentContainer>
       </Section>
-      <Section color={1}>
+      <Section color='1'>
         <ContentContainer>
-          <SiteText as='h2'>Skills</SiteText>
-          <Flex col css={{gap: 50}}>
+          <Flex col gap='12'>
+            <Section.Heading as='h2'>Skills</Section.Heading>
             <Skill label='Frontend'>
               React and React Native. Node.js for backend-for-frontends and jamstack. Experience
               with Babel, Webpack, Vite, Next.js, css, sass, css-in-js, svg rendering, react-spring,
@@ -51,44 +51,28 @@ const CV: NextPage<{}> = () => {
           </Flex>
         </ContentContainer>
       </Section>
-      <Section color={2}>
+      <Section color='2'>
         <Flex centered>
-          <DlBtn href='/files/Resume.pdf' target='_blank' rel='noopener noreferrer'>
+          <Button as='a' href='/files/Resume.pdf' target='_blank' rel='noopener noreferrer'>
             Download pdf
-          </DlBtn>
+          </Button>
         </Flex>
       </Section>
     </Flex>
   );
 };
 
-const Skill = ({label, children}: {label: string; children: ReactNode}) => {
+const Skill = ({ label, children }: { label: string; children: ReactNode }) => {
   return (
     <Box>
-      <SiteText as='h3' size={3} weight={700} css={{marginTop: 0, marginBottom: 10}}>
+      <Text as='h3' fontSize={3} fontWeight={700} marginTop='0' marginBottom='3'>
         {label}
-      </SiteText>
-      <SiteText as='p' size={1} css={{margin: 0}}>
+      </Text>
+      <Text as='p' fontSize={1} margin='0'>
         {children}
-      </SiteText>
+      </Text>
     </Box>
   );
 };
-
-const DlBtn = styled('a', {
-  textDecoration: 'none',
-  padding: '10px 20px',
-  color: 'white',
-  backgroundColor: 'var(--primary)',
-  fontSize: '1.2em',
-  fontFamily: 'Maven Pro, sans-serif',
-  borderRadius: 999,
-  border: 'solid 3px $sky',
-  '&:hover, &:active': {
-    backgroundColor: '$darker-primary',
-    borderColor: '$primary',
-    color: '$primary',
-  },
-});
 
 export default CV;

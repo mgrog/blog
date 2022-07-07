@@ -1,6 +1,5 @@
-import {Box} from '@elements';
-import {ReactNode, useState} from 'react';
-import {styled} from '~/stitches.config';
+import { ReactNode, useState } from 'react';
+import * as styles from './LinkObfuscator.css';
 
 type Props = {
   href: string;
@@ -8,7 +7,7 @@ type Props = {
 };
 
 // hide from bots
-const LinkObfuscator = ({href, children}: Props) => {
+const LinkObfuscator = ({ href, children }: Props) => {
   const [obfuscated, setObfuscated] = useState(true);
 
   const handleClick = () => {
@@ -16,7 +15,8 @@ const LinkObfuscator = ({href, children}: Props) => {
   };
 
   return (
-    <DetectionBox
+    <span
+      className={styles.detectionBox}
       onMouseEnter={() => setObfuscated(false)}
       onMouseLeave={() => setObfuscated(true)}>
       {obfuscated ? (
@@ -26,14 +26,8 @@ const LinkObfuscator = ({href, children}: Props) => {
       ) : (
         <a href={href}>{children}</a>
       )}
-    </DetectionBox>
+    </span>
   );
 };
 
-const DetectionBox = styled('span', {
-  display: 'inline-block',
-  padding: 5,
-  margin: -5,
-});
-
-export {LinkObfuscator};
+export { LinkObfuscator };
