@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import {Ridge0, Ridge1, Ridge2, Ridge3, Treeline} from '@assets/banner-layers';
-import {Box, Parallax} from '@elements';
+import { Ridge0, Ridge1, Ridge2, Ridge3, Treeline } from '@assets/banner-layers';
+import { Box, Parallax } from '@components';
 
 function Banner() {
   return (
@@ -21,10 +21,16 @@ function Banner() {
         <img src={Ridge3.src} alt='layer-4' />
       </Parallax.Item>
       <Parallax.Item layer={5}>
-        <Box css={{backgroundColor: '$sky', height: 1200, overflow: 'hidden'}} />
+        <Box
+          position='absolute'
+          backgroundColor='sky-color'
+          h='bannerHeight'
+          w='screen'
+          overflow='hidden'
+        />
       </Parallax.Item>
     </Parallax.Preserve>
   );
 }
 
-export {Banner};
+export { Banner };

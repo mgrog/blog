@@ -1,13 +1,13 @@
-import {Flex, SiteText} from '@elements';
+import { Flex, Text } from '@components';
 import Link from 'next/link';
 
 export default function NotFound() {
   return (
     <Flex col centered>
-      <SiteText css={{fontSize: '10em', fontFamily: 'Montserrat, sans-serif'}} weight={600}>
+      <Text fontSize={5} fontFamily='secondary' fontWeight={600}>
         404
-      </SiteText>
-      <SiteText>Lost, Friend?</SiteText>
+      </Text>
+      <Text>Lost, Friend?</Text>
       <Link href='/'>Go Home</Link>
     </Flex>
   );

@@ -4,13 +4,11 @@ import rehypePrism from '@mapbox/rehype-prism';
 import nextMdx from '@next/mdx';
 import rehypeSlug from 'rehype-slug';
 import autolinker from 'rehype-autolink-headings';
-import {h, s} from 'hastscript';
+import { h, s } from 'hastscript';
+import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin';
 
 const nextConfig = {
   reactStrictMode: true,
-  images: {
-    domains: ['via.placeholder.com'],
-  },
 };
 
 const withMDX = nextMdx({
@@ -51,8 +49,12 @@ const withMDX = nextMdx({
   },
 });
 
-export default withMDX({
-  ...nextConfig,
-  // Append the default value with md extensions
-  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
-});
+const withVanillaExtract = createVanillaExtractPlugin();
+
+export default withVanillaExtract(
+  withMDX({
+    ...nextConfig,
+    // Append the default value with md extensions
+    pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+  }),
+);

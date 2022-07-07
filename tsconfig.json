@@ -18,7 +18,7 @@
     "paths": {
       "@assets/*": ["./assets/*"],
       "@components": ["./src/components"],
-      "@elements": ["./src/elements"],
+      "@layout": ["./src/layout"],
       "@icons/*": ["assets/icons/*"],
       "@pageMarkdown/*": ["./page-markdown/*"],
       "~/*": ["./*"]

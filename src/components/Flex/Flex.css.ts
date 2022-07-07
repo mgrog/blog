@@ -1,29 +1,23 @@
-import {styled} from '~/stitches.config';
+import { recipe, RecipeVariants } from '@vanilla-extract/recipes';
 
-export const Flex = styled('div', {
-  display: 'flex',
+export const variants = recipe({
+  base: {
+    display: 'flex',
+  },
   variants: {
     col: {
       true: {
         flexDirection: 'column',
       },
-      false: {
+    },
+    row: {
+      true: {
         flexDirection: 'row',
       },
     },
-    grow: {
+    reverse: {
       true: {
-        flex: 1,
-      },
-    },
-    w100: {
-      true: {
-        width: '100%',
-      },
-    },
-    h100: {
-      true: {
-        height: '100%',
+        flexDirection: 'row-reverse',
       },
     },
     centered: {
@@ -37,29 +31,31 @@ export const Flex = styled('div', {
         alignItems: 'center',
         justifyContent: 'center',
       },
-    },
-    spaceBetween: {
-      true: {
-        justifyContent: 'space-between',
-      },
+      false: {},
     },
   },
   compoundVariants: [
     {
-      col: true,
-      centered: 'horizontal',
-      css: {
+      variants: {
+        col: true,
+        centered: 'horizontal',
+      },
+      style: {
         alignItems: 'center',
         justifyContent: 'flex-start',
       },
     },
     {
-      col: true,
-      centered: 'vertical',
-      css: {
+      variants: {
+        row: true,
+        centered: 'vertical',
+      },
+      style: {
         alignItems: 'flex-start',
         justifyContent: 'center',
       },
     },
   ],
 });
+
+export type VariantProps = RecipeVariants<typeof variants>;
