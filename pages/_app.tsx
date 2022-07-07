@@ -40,6 +40,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 
         <NavBar />
         <Banner />
+        <Box visibility='hidden' position='relative'>
+          <Box id='content' position='absolute' top='-24' />
+        </Box>
         <Content markdown={matchPost}>
           <Component {...pageProps} />
         </Content>

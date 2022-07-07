@@ -19,10 +19,10 @@ const Footer = () => (
         <Text as='h2' fontSize={2} paddingY='0'>
           Links
         </Text>
-        <Link href='/'>/home</Link>
-        <Link href='/posts'>/posts</Link>
-        <Link href='/cv'>/resume</Link>
-        <Link href='/about'>/about</Link>
+        <Link href='/#root'>/home</Link>
+        <Link href='/posts#content'>/posts</Link>
+        <Link href='/cv#content'>/resume</Link>
+        <Link href='/about#content'>/about</Link>
       </Flex>
     </Flex>
     <Flex centered>
