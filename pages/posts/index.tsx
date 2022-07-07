@@ -51,7 +51,7 @@ export const getStaticProps: GetStaticProps = async () => {
   let metadata: MetaData[] = [];
 
   for (let file of fs.readdirSync('./pages/posts')) {
-    if (file.includes('.mdx')) {
+    if (file.endsWith('.mdx')) {
       let { meta } = await import(`./${file}`);
 
       let [postNum] = file.split('.');
