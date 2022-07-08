@@ -47,7 +47,7 @@
   "lint-staged": {
     "*.ts": [
       "organize-imports-cli",
-      "prettier --write --ignore-unknown"
+      "pretty-quick --staged"
     ]
   }
 }
