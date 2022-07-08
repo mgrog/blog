@@ -14,7 +14,7 @@ export const postChildrenVariants = recipe({
       'h-fixed': {
         height: 310,
       },
-      mobile: {
+      'mobile': {
         minWidth: 0,
         height: 'auto',
       },
@@ -31,7 +31,7 @@ export type PostChildrenVariants = RecipeVariants<typeof postChildrenVariants>;
 export const postImg = style([
   atoms({ w: 'full', position: 'relative' }),
   {
-    height: 310,
+    'height': 310,
     '@media': {
       'screen and (max-width: 380px)': {
         height: 290,

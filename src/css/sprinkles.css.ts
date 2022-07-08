@@ -45,17 +45,17 @@ const responsiveProperties = defineProperties({
     bottom: vars.space,
 
     h: {
-      full: {
+      'full': {
         height: '100%',
       },
-      screen: {
+      'screen': {
         height: '100vh',
       },
       '700px': {
         height: '700px',
       },
       '1200px': { height: '1200px' },
-      bannerHeight: { height: '600px' },
+      'bannerHeight': { height: '600px' },
     },
     visibility: ['hidden', 'visible'],
     transform: vars.bannerTransform,

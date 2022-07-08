@@ -16,7 +16,10 @@ let Post = ({ imgProps, title, subtitle, postId, children, tags, published }: Pr
   return (
     <Flex
       position='relative'
-      flexDirection={{ bp0: 'column', bp2: +postId % 2 ? 'row' : 'row-reverse' }}
+      flexDirection={{
+        bp0: 'column',
+        bp2: +postId % 2 ? 'row' : 'row-reverse',
+      }}
       marginY={{ bp2: '14' }}
       maxWidth={{ bp0: 'mobileContentMax', bp2: 'full' }}
       gap={{ bp2: '8' }}>

@@ -2,7 +2,7 @@ import { calc } from '@vanilla-extract/css-utils';
 
 export const space = {
   '0': '0',
-  px: '1px',
+  'px': '1px',
   '0.5': '0.125rem',
   '1': '0.25rem',
   '1.5': '0.375rem',
@@ -36,16 +36,16 @@ export const space = {
   '700px': '700px',
   '19vw': '19vw',
   '24vw': '24vw',
-  min_700_or_32vw: 'min(-700px, -32vw)',
-  auto: 'auto',
-  full: '100%',
-  fullPlus10: `${calc('100%').add('10px')}`,
-  fit: 'fit-content',
-  max: 'max-content',
-  min: 'min-content',
-  viewHeight: '100vh',
-  viewWidth: '100vw',
-  none: '0',
+  'min_700_or_32vw': 'min(-700px, -32vw)',
+  'auto': 'auto',
+  'full': '100%',
+  'fullPlus10': `${calc('100%').add('10px')}`,
+  'fit': 'fit-content',
+  'max': 'max-content',
+  'min': 'min-content',
+  'viewHeight': '100vh',
+  'viewWidth': '100vw',
+  'none': '0',
 };
 
 type ExcludedKeys =

@@ -4,7 +4,7 @@ import { negSpace, space } from '~/src/css/tokens/space';
 export const vars = createGlobalTheme(':root', {
   color: {
     'light-primary': '#2c77bf',
-    primary: '#1b60a5',
+    'primary': '#1b60a5',
     'dark-primary': '#052b4f',
     'darker-primary': '#001b33',
     'banner-height': '600px',
@@ -18,7 +18,7 @@ export const vars = createGlobalTheme(':root', {
     bounce: 'width 250ms cubic-bezier(0.175, 0.885, 0.32, 1.275)',
   },
   size: {
-    px: '1px',
+    'px': '1px',
     '400px': '400px',
     '500px': '500px',
   },
@@ -30,11 +30,11 @@ export const vars = createGlobalTheme(':root', {
     bpMax: { '@media': 'screen and (min-width: 1800px)' },
   },
   bannerTransform: {
-    layer0: 'translateZ(0)',
-    layer1: 'translateZ(-0.4px) scale(1.4)',
+    'layer0': 'translateZ(0)',
+    'layer1': 'translateZ(-0.4px) scale(1.4)',
     'layer1-lg': 'translateY(80%) translateZ(-0.4px) scale(1.4)',
-    layer2: 'translateZ(-0.7px) scale(1.7)',
-    layer3: 'translateZ(-1.2px) scale(2.4)',
+    'layer2': 'translateZ(-0.7px) scale(1.7)',
+    'layer3': 'translateZ(-1.2px) scale(2.4)',
     'layer4-sm': 'translateZ(-1.9px) scale(2.45)',
     'layer4-lg': 'translateZ(-1.9px) scale(1.8)',
     'layer5-sm': 'translateZ(-2.14px) scaleX(5) scaleY(2)',
@@ -46,7 +46,7 @@ export const vars = createGlobalTheme(':root', {
     '1100px': '1100px',
     '1500px': '1500px',
     '1800px': '1800px',
-    screen: '100vw',
+    'screen': '100vw',
   },
   bannerHeight: '600px',
   fonts: {
@@ -64,8 +64,8 @@ export const vars = createGlobalTheme(':root', {
     5: '10em',
   },
   widths: {
-    full: { width: '100%' },
-    screen: { width: '100vw' },
+    'full': { width: '100%' },
+    'screen': { width: '100vw' },
     '1/2': { width: '50vw' },
     '3/4': { width: '75vw' },
     '1800px': { width: '1800px' },
