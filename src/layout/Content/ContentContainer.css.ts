@@ -22,5 +22,6 @@ export const container = style([
       bp0: 'mobilePad',
       bp2: 'desktopPad',
     },
+    paddingBottom: '12',
   }),
 ]);

@@ -48,17 +48,17 @@ pre code {
 .autolink-header {
   height: 25px;
   text-decoration: none;
+  vertical-align: middle;
 }
 
-.autolink-svg {
-  display: inline;
+.autolink-icon {
   visibility: hidden;
-  color: rgb(64 71 86);
-  margin-left: 5px;
-  margin-bottom: -3px;
+  color: #1b60a5;
+  margin-left: 0.5rem;
+  font-size: 1.8em;
 }
 
-h3:hover .autolink-svg {
+h3:hover .autolink-icon {
   visibility: visible;
 }
 

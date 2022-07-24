@@ -1,0 +1,68 @@
+export const meta = {
+  title: 'Uh Oh, React Might Have Just Killed Runtime CSS-in-JS',
+  subtitle: 'Your favorite library might not work anymore',
+  snippet:
+    'The React team will not commit to supporting runtime css-in-js libraries for concurrent React...',
+  tags: ['react', 'css-in-js'],
+  published: '7/24/2022',
+};
+
+import VEIcon from '@assets/post-content/post-3/ve-icon.svg';
+
+# <span>{meta.title}</span>
+
+## <span>{meta.subtitle}</span>
+
+So ReactWG dropped a [rather large bombshell](https://github.com/reactwg/react-18/discussions/110) back in October 2021 that seemingly went off unnoticed by many
+(including me). The gist of the article is that the React team will not commit to supporting runtime css-in-js libraries for concurrent React going forward.
+They now officially recommend you switch to something with static css.
+
+So if you want to use the new concurrent features React 18 brings (and you will), many of the most popular
+css-in-js libraries will likely not work well.
+
+### Kill the Past
+
+While runtime css-in-js libraries are some of the most productive tools to quickly build websites, the
+gains in responsiveness that can be acheived with concurrent rendering are too good to miss out on.
+Even my newest favorite, Stitches.js, seems to be caught off guard, now even [recommending to use a different library](https://github.com/stitchesjs/stitches/issues/1026)
+So with a heavy heart I'm pouring one out for some of my favorite tools. Goodbye Emotion. Goodbye Stitches...so young (ಥ﹏ಥ).
+
+You will be missed...
+
+### Hello Vanilla Extract <img src={VEIcon.src} style={{marginBottom: '-0.2rem'}} />
+
+Luckily good ideas spread fast in the software world. There are a number of static css tools already available, with Tailwinds being probably the most popular.
+I'm not the biggest fan of Tailwinds, I believe it's a good tool for prototyping but it isn't the best for long-term maintainability or avoiding vendor lock-in.
+Linaria is another tool that has some fans, I personally haven't used it but I've heard it can be pain to set up.
+
+The one that's caught my eye is [Vanilla Extract](https://vanilla-extract.style). It's been gaining a lot of steam lately, and for good reason.
+This library uses typescript to preprocess atomic css at the build stage, so any styles you write are typesafe with autocompletion. It has no runtime cost, and
+compresses well in your bundle. And the best part? It pretty much steals the variant system from Stitches, which is awesome.
+
+So I went ahead and rewrote this blog from Stitches to Vanilla Extract and I'm mostly pleased with the results.
+
+So far I've found the following:
+
+Pros:
+
+- Variant system is mostly drop-in from Stitches and still awesome.
+
+- Supported by SWC with Next plugin (official docs seems to be out of date on this).
+
+- No more concerns about first load performance as there's no JS to run.
+
+Cons:
+
+- Next plugin seems a little slow at times generating the styles on cold restarts.
+
+- No helpful React integration yet to generate styled components. Must be done manually.
+
+- Styles always need to be in a separate `css.ts` file. For larger projects this may be a net pro.
+
+- You can only use responsive styles with variants (called recipes in VE world) if you have already registered them as atomic classes.
+  This is a little annoying if you have a complex layout just for one specific instance.
+
+Overall, while there's a bit more setup and structure, I found it pretty similar for productivity while also being aligned with the future of React.
+We don't have to choose between user experience and developer productivity!
+
+Another reminder to my fellow frontend devs to never get too attached to that library you like.
