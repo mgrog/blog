@@ -1,9 +1,6 @@
-import { createVar, style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 import { sprinkles } from '~/src/css';
-
-const imageWidth = createVar();
-const imageTransform = createVar();
 
 const layer = {
   0: style([
@@ -30,7 +27,7 @@ const layer = {
         bpMax: 'screen',
       },
       w: { bp0: 'screen' },
-      bottom: { bp0: '-200px', bp2: '-260px' },
+      bottom: { bp0: '-200px', bp2: '-260px', bpMax: '-5' },
       maxHeight: { bpMax: '500px' },
     }),
   ]),
@@ -99,15 +96,6 @@ const layer = {
       },
     }),
   ]),
-  5: style([
-    { bottom: 500 },
-    sprinkles({
-      transform: {
-        bp0: 'layer5-sm',
-        bp2: 'layer5-md',
-      },
-    }),
-  ]),
 };
 
 export const item = recipe({
@@ -131,7 +119,6 @@ export const perspective = style({
   WebkitOverflowScrolling: 'touch',
   width: '100vw',
   height: '100vh',
-  backgroundColor: '#121212',
   backfaceVisibility: 'hidden',
   scrollBehavior: 'smooth',
 });

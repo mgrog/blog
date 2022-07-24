@@ -48,7 +48,6 @@ export const vars = createGlobalTheme(':root', {
     '1800px': '1800px',
     'screen': '100vw',
   },
-  bannerHeight: '600px',
   fonts: {
     primary: 'Maven Pro, sans-serif',
     secondary: 'Montserrat, sans-serif',

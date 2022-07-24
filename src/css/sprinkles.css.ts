@@ -55,7 +55,6 @@ const responsiveProperties = defineProperties({
         height: '700px',
       },
       '1200px': { height: '1200px' },
-      'bannerHeight': { height: '600px' },
     },
     visibility: ['hidden', 'visible'],
     transform: vars.bannerTransform,

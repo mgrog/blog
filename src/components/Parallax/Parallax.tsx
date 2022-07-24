@@ -2,7 +2,7 @@ import { Box } from '@components';
 import { PropsWithChildren } from 'react';
 import * as styles from './Parallax.css';
 
-const Item = ({ layer, children }: PropsWithChildren<{ layer?: styles.LayerProps }>) => {
+const BannerLayer = ({ layer, children }: PropsWithChildren<{ layer?: styles.LayerProps }>) => {
   return <Box className={styles.item({ layer })}>{children}</Box>;
 };
 const Perspective = ({ children }: PropsWithChildren<{}>) => {
@@ -13,7 +13,7 @@ const Preserve = ({ children }: PropsWithChildren<{}>) => {
 };
 
 const Parallax = Object.assign({
-  Item,
+  BannerLayer,
   Perspective,
   Preserve,
 });
