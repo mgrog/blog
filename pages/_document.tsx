@@ -9,7 +9,7 @@ class MyDocument extends Document {
           <meta name='author' content='Mike Grogan' />
           <meta
             name='keywords'
-            content='Mike Grogan, Michael Grogan, Typescript, Javascript, Elixir, Frontend, CSS'
+            content='Mike Grogan, Michael Grogan, Typescript, Rust, Frontend, CSS'
           />
           <link
             href='https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700;800;900&family=Indie+Flower&family=Montserrat&display=swap'

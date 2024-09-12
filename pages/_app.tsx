@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps }: AppProps) {
               color='text-dark'
               responsive='desktop'
               fontWeight={900}>
-              macro dev refinement
+              mike grogan's blog
             </Text>
           </Link>
           <Link href='/' passHref>
