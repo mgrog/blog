@@ -33,7 +33,7 @@ function MyApp({ Component, pageProps }: AppProps) {
               color='text-dark'
               responsive='mobile'
               fontWeight={900}>
-              mdr
+              mgb
             </Text>
           </Link>
         </HomeLink>
