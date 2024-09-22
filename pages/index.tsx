@@ -8,7 +8,7 @@ const Home: NextPage<{}> = () => {
   return (
     <ContentContainer className={styles.hometext} paddingBottom='24'>
       <Head>
-        <title>Macro Dev Refinement Home Page</title>
+        <title>Mike Grogan&apos;s Blog</title>
       </Head>
       <HomeMD />
     </ContentContainer>
