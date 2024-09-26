@@ -14,18 +14,17 @@ const CV: NextPage<{}> = () => {
         <ContentContainer>
           <Section.Heading paddingBottom='12'>CV/Resume</Section.Heading>
           <Text as='p' fontSize={1}>
-            Michael Grogan is a senior fullstack developer with an emphasis on frontend
-            technologies. His industry experience spans 7 years and includes react, react-native,
-            angular, node, elixir, graphQL, and docker technologies. He has led small teams and
-            mentored junior devs, as well as been involved in high-level decision-making in his
-            various roles.
-          </Text>
-          <Text as='p' fontSize={1}>
-            Michael is a strong communicator for both business and technological needs, and takes
-            pride in writing concise, testable, and semantic code, as well as aesthetic and
-            intuitive UIs. He has received a grant for and subsequently shipped software for a top
-            100 crypto project, and is currently working on a React Native app and Elixir API for
-            web3 platforms during his time between roles.
+            Michael Grogan is a senior full-stack engineer with a decade of experience. Throughout
+            his career he has worked with a broad range of industry tools and languages, including
+            Typescript, Rust, Elixir, Python, React, React Native, Tailwinds, AWS, Docker, Axum,
+            GraphQL, Postgres, and MongoDB. He has taken projects from zero to production
+            deployments. He most recently worked for a venture funded DeFi company as a Dev Lead,
+            shipping three projects while owning the full development process, architecting both the
+            client-side applications and the Rust-based backends, and ultimately deploying them to
+            AWS. During his time there he worked with a number of blockchain ecosystems such as
+            Cosmos, Solana, and Ethereum. As a veteran engineer he is adaptable to any team or solo
+            project and capable of delivering immediate business value to an organization in need of
+            his skillset.
           </Text>
         </ContentContainer>
       </Section>
@@ -33,14 +32,18 @@ const CV: NextPage<{}> = () => {
         <ContentContainer>
           <Flex col gap='12'>
             <Section.Heading as='h2'>Skills</Section.Heading>
+            <Skill label='Languages'>Typescript/Javascript, Rust, Elixir, Python</Skill>
             <Skill label='Frontend'>
-              React and React Native. Node.js for backend-for-frontends and jamstack. Experience
-              with Babel, Webpack, Vite, Next.js, css, sass, css-in-js, svg rendering, react-spring,
-              Redux and Jotai state management libraries.
+              React, React Native, Vite, Next.js, PWAs, css, sass, css-in-js, react-spring,
+              framer-motion, tailwindcss, multiple state management libraries.
             </Skill>
+            <Skill label='Blockchain'>Cosmos, Solana, Ethereum toolsets.</Skill>
             <Skill label='Backend'>
-              Elixir and Phoenix, PostgreSQL, Docker. Experience with API and liveview/eex
-              development.
+              Rust, Axum, Elixir, PostgreSQL, MongoDB, Docker. Experience with API design, REST,
+              GraphQL.
+            </Skill>
+            <Skill label='Infrastructure'>
+              AWS, Cloud Formation Templating, Docker, CI/CD, Github Actions, Turborepo.
             </Skill>
             <Skill label='Soft Skills'>
               Years of experience working at both large and small companies with colleagues from
