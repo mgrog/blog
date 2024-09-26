@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Parallax.Perspective>
         <Box id='root' visibility='hidden' />
         <HomeLink>
-          <Link href='/' passHref>
+          <Link href='/' passHref legacyBehavior>
             <Text
               as='a'
               className='banner'
@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }: AppProps) {
               mike grogan&apos;s blog
             </Text>
           </Link>
-          <Link href='/' passHref>
+          <Link href='/' passHref legacyBehavior>
             <Text
               as='a'
               className='banner'

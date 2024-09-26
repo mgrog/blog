@@ -62,17 +62,17 @@ const NavBar = () => {
           justifyContent='space-between'
           className={clsx(openClass, linksClass, styles.navlinksContainer)}
           onTransitionEnd={handleOnTransitionEnd}>
-          <Link href='/' passHref>
-            <a className={styles.navlink}>Home</a>
+          <Link href='/' passHref className={styles.navlink}>
+            Home
           </Link>
-          <Link href='/posts#content' passHref scroll={false}>
-            <a className={styles.navlink}>Blog Posts</a>
+          <Link href='/posts#content' passHref scroll={false} className={styles.navlink}>
+            Blog Posts
           </Link>
-          <Link href='/cv#content' passHref scroll={false}>
-            <a className={styles.navlink}>CV/Resume</a>
+          <Link href='/cv#content' passHref scroll={false} className={styles.navlink}>
+            CV/Resume
           </Link>
-          <Link href='/about#content' passHref scroll={false}>
-            <a className={styles.navlink}>About Me</a>
+          <Link href='/about#content' passHref scroll={false} className={styles.navlink}>
+            About Me
           </Link>
         </Flex>
         <div className={styles.tip}>nav here!</div>
